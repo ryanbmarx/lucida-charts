@@ -6,4 +6,4 @@ public/**/*.js
 public/**/*.map
 docs/
 .env
-public/css
+public/css/
