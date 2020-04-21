@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Lucida charts</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <link href="../../../css/global.css" rel="stylesheet">
+    <script src="palm-oil-chart.min.js"></script>
+</head>
+
+<body>
+    <div id="container" style="min-height: var(--min-height); height: 100vh;" />
+    <script type="module">
+        import { initFrame } from 'https://unpkg.com/@newswire/frames/dist/index.mjs';
+
+        window.addEventListener("DOMContentLoaded", function (e) {
+            initFrame();
+        })
+    </script>
+</body>
+
+</html>

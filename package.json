@@ -1,0 +1,37 @@
+{
+  "name": "s2-app",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-json": "^4.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-replace": "^2.3.1",
+    "d3": "^5.15.1",
+    "gootenberg": "^1.4.2",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.32.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-livereload": "^1.0.4",
+    "rollup-plugin-svelte": "^5.1.1",
+    "rollup-plugin-terser": "^4.0.4",
+    "sander": "^0.6.0",
+    "svelte": "^3.19.2"
+  },
+  "dependencies": {
+    "@newswire/frames": "^0.3.1",
+    "highcharts": "^8.0.4",
+    "sirv-cli": "^0.4.5"
+  },
+  "scripts": {
+    "autobuild": "rollup -c -w",
+    "build": "rollup -c",
+    "dev": "run-p start:dev autobuild",
+    "start": "sirv public --single",
+    "start:dev": "sirv public --single --dev"
+  },
+  "browserslist": "> 0.25%, not dead"
+}

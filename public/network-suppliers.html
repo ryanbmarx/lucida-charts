@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Network of Dirty Palm Suppliers | Lucida</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="network" style="height: 550px; width: 100%;"></div>
+    <div id="nodata" style="height: 50px; width: 100%;"></div>
+
+    <script type="text/javascript">
+        const rspoColor = "#58a24a";
+        const nonRspoColor = "#231f20";
+        const noDataColor = "#aaaaaa"
+
+        const cos = new vis.DataSet([
+            {
+                id: 1,
+                label: "Batu Kawan",
+                font: {
+                    size: 20
+                }
+            },
+            {
+                id: 2, label: "Astra Agro",
+                font: {
+                    size: 20
+                }
+            },
+            { id: 3, label: "TMK PJSC" },
+            { id: 4, label: "Mitsubishi Gas Chemical Inc." },
+            { id: 5, label: "Borneo Taiko Clay Sdn Bhd." },
+            { id: 6, label: "Astra Graphia Tbk" },
+            { id: 7, label: "Astra International" },
+            { id: 8, label: "Astra Otoparts Tbk" },
+            {
+                id: 10,
+                label: "Indofood",
+                font: {
+                    size: 20
+                },
+            },
+            {
+                id: 11,
+                label: "Eagle High Plantations",
+                color: { background: rspoColor }
+            },
+            { id: 12, label: "Gokul Agro Resources" },
+            { id: 13, label: "Indomobil Sukses Internasional" },
+            {
+                id: 14,
+                label: "Kuala Lumpur Kepong",
+                color: {
+                    background: rspoColor
+                },
+            },
+
+        ]);
+
+        var cosEdges = new vis.DataSet([
+            { to: 1, from: 2 },
+            { to: 1, from: 14 },
+            { to: 1, from: 3 },
+            { to: 1, from: 4 },
+            { to: 1, from: 5 },
+            { to: 10, from: 13 },
+            { to: 2, from: 6 },
+            { to: 2, from: 7 },
+            { to: 2, from: 8 },
+            { to: 2, from: 11 },
+            { to: 2, from: 12 },
+            { to: 15, from: 15 },
+            { to: 16, from: 16 }
+
+        ]);
+
+        // create a network
+        var container = document.getElementById("network");
+        var data = {
+            nodes: cos,
+            edges: cosEdges
+        };
+        var options = {
+            layout: {
+                randomSeed: parseFloat("0.14817030331924874:1586020722944")
+            },
+            edges: {
+                arrows: "to",
+                color: "#aaaaaa"
+            },
+            nodes: {
+                shape: "box",
+                shapeProperties: { borderRadius: 3 },
+                color: {
+                    border: "transparent",
+                    background: nonRspoColor
+                },
+                font: {
+                    color: "white",
+                    size: 14,
+                    face: "'Lato', 'Helvetica', 'Arial', sans-serif"
+                }
+            },
+            physics: false,
+            interaction: {
+                dragNodes: true,
+                zoomView: true,
+                dragView: true
+            }
+        };
+
+        var nodataContainer = document.getElementById("nodata");
+        var nodataData = {
+            nodes: new vis.DataSet([
+                { id: 15, label: "IJM" },
+                { id: 16, label: "Anglo Eastern" }
+            ])
+        }
+
+        var nodataOptions = {
+            layout: {
+
+                randomSeed: parseFloat("0.42299269041363574:1586023992593"),
+
+            },
+            nodes: {
+                shape: "box",
+                shapeProperties: { borderRadius: 3 },
+                color: {
+                    border: "transparent",
+                    background: noDataColor
+                },
+                font: {
+                    color: "black",
+                    size: 20
+                }
+            },
+            physics: false,
+            interaction: {
+                dragNodes: false,
+                zoomView: false,
+                dragView: false
+            }
+        };
+
+
+
+        if (window && window.IntersectionObserver) {
+            var observer = new IntersectionObserver(
+                entries => {
+                    entries.forEach(entry => {
+                        // set the src attribute and bail
+                        if (entry.isIntersecting && entry.intersectionRatio >= 0) {
+                            var network = new vis.Network(container, data, options);
+                            network.moveTo({
+                                x: 0,
+                                y: 0
+                            });
+                            var nodata = new vis.Network(nodataContainer, nodataData, nodataOptions);
+
+                            nodata.moveTo({
+                                x: 0,
+                                y: 0
+                            });
+                            observer.unobserve(container);
+                        }
+                    });
+                }
+            );
+            observer.observe(container);
+        } else {
+            var network = new vis.Network(container, data, options);
+            network.moveTo({
+                x: 0,
+                y: 0
+            })
+
+            var nodata = new vis.Network(nodataContainer, nodataData, nodataOptions);
+
+            nodata.moveTo({
+                x: 0,
+                y: 0
+            })
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+body {
+  --transition-speed: 450ms;
+}
+.modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 509px;
+  height: 100%;
+  background: var(--black-primary);
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  transform: translate(calc(100% + 50px), 0);
+  transition: transform var(--transition-speed) ease;
+
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.25);
+
+  z-index: 101;
+}
+
+.modal.modal--visible {
+  /* Important to override the inline style */
+  transform: translate(0, 0) !important;
+}
+
+.modal-overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  opacity: 0;
+
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  transition: opacity var(--transition-speed) ease;
+}
+
+.modal-overlay.modal-overlay--visible {
+  left: 0;
+  opacity: 1;
+  transition: opacity var(--transition-speed) ease;
+}
+
+.modal__inner {
+  font: normal 18px/27px var(--fonts-sans-serif);
+  padding: 33px;
+  color: white;
+}
+
+.modal__label {
+  display: block;
+  text-transform: uppercase;
+  font: bold 12px/18px var(--fonts-sans-serif);
+  border-bottom: 4px solid white;
+  padding: 0 0 8px 0;
+  margin: 0 0 16px 0;
+}
+
+.modal__company-name {
+  font: 46px/58px var(--fonts-serif);
+  margin: 0 0 22px 0;
+}
+
+.facts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid white;
+}
+
+.fact {
+  padding: 8px 0;
+  border-top: 1px solid white;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.fact__title {
+  font-weight: bold;
+  margin-right: 16px;
+}
+
+.fact__content {
+  text-align: right;
+}
+
+.fact__content--forest-500 span {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  background: var(--green-light);
+  border: 2px solid var(--green-light);
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin: 0 8px 0 0;
+}
+
+.fact__content--forest-500 span:first-child {
+  background: transparent;
+}
+
+.fact__content--forest-500 span:last-of-type {
+  margin: 0;
+}
+
+.modal__button {
+  display: flex;
+  align-items: center;
+
+  font-weight: bold;
+  font-size: 12px;
+  background: transparent;
+  border: none;
+  color: white;
+
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.modal__button.modal__button--close {
+  height: 44px;
+  margin: 0 0 64px auto;
+}
+
+.modal__button.modal__button--close svg {
+  stroke: var(--green-light);
+  stroke-width: 8;
+  height: 1em;
+  margin: 0 0 0 0.5em;
+}
+.modal__button.modal__button--more {
+  position: relative;
+  height: 64px;
+  width: 133px;
+  margin: 32px 0 0 auto;
+  text-transform: uppercase;
+}
+
+.modal__button--more svg {
+  fill: var(--green-light);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.lucida-flourish {
+  margin-top: auto;
+  transform: translate(-60px, 0);
+}

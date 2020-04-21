@@ -1,0 +1,81 @@
+html body {
+  --fonts-sans-serif: "Lato", "Helvetica", "Arial", sans-serif;
+  --fonts-serif: "Playfair Display", "Georgia", serif;
+  --greyPutty: #e2e0d7;
+  --blackCharcoal: #1d1e1b;
+  --greenSeafoam: #5fb994;
+  --white: #fff;
+  --greenParakeet: #34a636;
+  --greenMoss: #1d7059;
+  --greenPine: #194f3e;
+  --greenBottle: #5535c;
+  --greenDeep: #0b1e14;
+  --greenBlack: #08140d;
+  --textMain: #606060;
+  --textLight: #888888;
+  /* KURT */
+  --green-light: #60b993;
+  --pink-base: #9e005d;
+  --tan-primary: #e2e0d7;
+  --tan-medium: #e5e2e0;
+  --black-primary: #1d1e1b;
+  --backgroundMain: #ececec;
+  --backgroundLightAccent: #f3f3f3;
+  --backgroundDarkAccent: #e5e5e5;
+  --chart-text: var(--black-primary);
+  --min-height: 410px;
+  margin: 0;
+  padding: 0;
+}
+.legend {
+  font: 12px/18px var(--fonts-sans-serif);
+  margin: 0 0 16px 0;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+.legend--left {
+  justify-content: flex-start;
+}
+.legend--right {
+  justify-content: flex-end;
+}
+.legend li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 16px 0 0;
+}
+.legend li:last-child {
+  margin: 0;
+}
+.legend__dot {
+  background: red;
+  display: block;
+  height: 0.7em;
+  width: 0.7em;
+  margin: 0 8px 0 0;
+  border-radius: 50%;
+}
+.profile-link {
+  color: inherit;
+}
+.profile-link::after {
+  content: "i";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80%;
+  height: 1em;
+  width: 1em;
+  background: var(--chart-text);
+  color: white;
+  padding: 0;
+  border-radius: 50%;
+  text-transform: lowercase;
+  font-size: 10px;
+  box-sizing: border-box;
+  margin: 0 0 0 0.25em;
+  vertical-align: super;
+}
