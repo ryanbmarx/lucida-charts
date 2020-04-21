@@ -1,14 +1,19 @@
 document.addEventListener("DOMContentLoaded", function (e) {
-  //   CSS
+  // CSS
+  // Create the css link element and put it in the head, where it belongs
   const css = document.createElement("link");
   css.setAttribute("href", "https://lucidamktstg.wpengine.com/wp-content/uploads/graphics/css/modal.css");
   css.setAttribute("rel", "stylesheet");
   document.head.appendChild(css);
+
   // OVERLAY
+  // Create the semitransparent overlay first, and append it to the DOM
   const modalOverlay = document.createElement("div");
   modalOverlay.classList.add("modal-overlay");
   document.body.appendChild(modalOverlay);
-  //   MODAL
+
+  // MODAL
+  // Now, make the modal, which is mostly just lorem html we're inserting into an <aside>
   const modal = document.createElement("aside");
   modal.classList.add("modal");
   modal.setAttribute("style", "transform: translate(calc(100% + 50px), 0);");
@@ -91,16 +96,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
     </aside>`;
 
   document.body.appendChild(modal);
+  // Initialize the close button on the modal
   modal.querySelector(".modal__button--close").addEventListener("click", function (e) {
     closeModal(modal, modalOverlay);
   });
 
+  // Initialize modal close when the overlay is clicked.
   modalOverlay.addEventListener("click", function (e) {
     closeModal(modal, modalOverlay);
   });
 
+  // Look for profile links on the parent page. There probably won't be any, but here we are.
   const profileLinks = Array.from(document.querySelectorAll(".profile-link"));
 
+  // Listen for our postMessage from the iframe for triggering modal display
   window.addEventListener(
     "message",
     function (e) {
@@ -120,6 +129,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   }
 });
 
+// This opens the modal, using CSS transitions
 function openModal(modal, modalOverlay, name = "XXX") {
   modal.querySelector("#name").innerText = name;
   console.log(name);
@@ -127,6 +137,7 @@ function openModal(modal, modalOverlay, name = "XXX") {
   modalOverlay.classList.add("modal-overlay--visible");
 }
 
+// This closes the modal, using CSS transitions
 function closeModal(modal, modalOverlay) {
   modal.classList.remove("modal--visible");
   modalOverlay.classList.remove("modal-overlay--visible");
