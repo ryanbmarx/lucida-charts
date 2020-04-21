@@ -1,0 +1,22 @@
+.profile-link {
+  color: inherit;
+
+  &::after {
+    content: "i";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80%;
+    height: 1em;
+    width: 1em;
+    background: var(--chart-text);
+    color: white;
+    padding: 0;
+    border-radius: 50%;
+    text-transform: lowercase;
+    font-size: 10px;
+    box-sizing: border-box;
+    margin: 0 0 0 0.25em;
+    vertical-align: super;
+  }
+}

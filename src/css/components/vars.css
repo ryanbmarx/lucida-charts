@@ -1,0 +1,27 @@
+html body {
+  --fonts-sans-serif: "Lato", "Helvetica", "Arial", sans-serif;
+  --fonts-serif: "Playfair Display", "Georgia", serif;
+  --greyPutty: #e2e0d7;
+  --blackCharcoal: #1d1e1b;
+  --greenSeafoam: #5fb994;
+  --white: #fff;
+  --greenParakeet: #34a636;
+  --greenMoss: #1d7059;
+  --greenPine: #194f3e;
+  --greenBottle: #5535c;
+  --greenDeep: #0b1e14;
+  --greenBlack: #08140d;
+  --textMain: #606060;
+  --textLight: #888888;
+  /* KURT */
+  --green-light: #60b993;
+  --pink-base: #9e005d;
+  --tan-primary: #e2e0d7;
+  --tan-medium: #e5e2e0;
+  --black-primary: #1d1e1b;
+  --backgroundMain: #ececec;
+  --backgroundLightAccent: #f3f3f3;
+  --backgroundDarkAccent: #e5e5e5;
+  --chart-text: var(--black-primary);
+  --min-height: 410px;
+}
