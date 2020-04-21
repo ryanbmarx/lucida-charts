@@ -2,5 +2,8 @@
 node_modules
 public/bundle.*
 public/embed.html
+public/**/*.js
+public/**/*.map
 docs/
 .env
+public/css
