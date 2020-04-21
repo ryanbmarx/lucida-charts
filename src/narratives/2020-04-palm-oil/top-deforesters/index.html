@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Lucida charts</title>
+
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="../../../css/global.css" />
+    <link rel="stylesheet" href="../../../css/sidebar.css" />
+
+</head>
+
+<body>
+
+    <div id="deforest-container" style="min-height: var(--min-height); height: 100%;"></div>
+    <script src="./top-deforesters.min.js"></script>
+    <script type="module">
+        import { initFrame } from 'https://unpkg.com/@newswire/frames/dist/index.mjs';
+
+        window.addEventListener("DOMContentLoaded", function (e) {
+            initFrame();
+        })
+    </script>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 import Highcharts from "highcharts";
-import { lucidaChartTheme } from "./theme//lucida-chart-theme.js";
-import { colors } from "./theme/lucida-colors.js";
+import { lucidaChartTheme } from "../../../theme/lucida-chart-theme";
+import { colors } from "../../../theme/lucida-colors";
 
 function parseCSV(text) {
   const lines = text.split("\n");

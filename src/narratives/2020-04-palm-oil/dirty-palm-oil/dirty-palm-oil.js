@@ -1,4 +1,4 @@
-import { sidebar } from "./utils/sidebar.js";
+import { sidebar } from "../../../utils/sidebar";
 
 document.addEventListener("DOMContentLoaded", function (e) {
   const data = [

@@ -1,6 +1,5 @@
-import { getMax } from "./utils/get-max.js";
-import { format } from "./utils/format.js";
-import { sidebar } from "./utils/sidebar";
+import { getMax } from "../../../utils/get-max";
+import { sidebar } from "../../../utils/sidebar";
 
 document.addEventListener("DOMContentLoaded", function (e) {
   const data = [
