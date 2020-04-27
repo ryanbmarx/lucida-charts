@@ -4,6 +4,8 @@ public/bundle.*
 public/**/*.html
 public/**/*.js
 public/**/*.map
+public/**/*.css
+public/**/*.csv
 docs/
 .env
 public/css/
