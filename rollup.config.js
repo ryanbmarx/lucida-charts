@@ -45,6 +45,13 @@ const options = {
 
     getBabel(),
 
+    replace({
+      "process.env.GIT_BRANCH": JSON.stringify(process.env.GIT_BRANCH),
+      "process.env.ASSET_PATH": JSON.stringify(process.env.ASSET_PATH),
+      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development"),
+      "process.env.PROJECT_SLUG": JSON.stringify(PROJECT_SLUG),
+      "process.env.MAPBOX_TOKEN": JSON.stringify(process.env.MAPBOX_TOKEN),
+    }),
     // Watch the `public` directory and refresh the
     // browser on changes when not in production
     !production && livereload("public"),
@@ -60,12 +67,12 @@ const options = {
 
 export default [
   {
-    input: "src/narratives/base.js",
+    input: "src/narratives/2020-04-papua-deforestation/papua-map/papua-map.js",
     output: {
       sourcemap: true,
       format: "iife",
       name: "base",
-      file: "public/narratives/base.min.js",
+      file: "public/narratives/2020-04-papua-deforestation/papua-map/papua-map.min.js",
     },
     ...options,
   },

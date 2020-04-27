@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Deforestation in Papua | Lucida</title>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="../../../css/global.css">
+    <style>
+        .container {
+            background: #eee;
+            display: flex;
+            flex-flow: column nowrap;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .map {
+            flex: 2 2;
+            background: black;
+            display: flex;
+
+        }
+
+        .chart {
+            box-sizing: border-box;
+            padding: 16px;
+            margin: 0;
+            flex: 1 1;
+        }
+
+        .chart__container {
+            height: 100%;
+        }
+
+        @media all and (min-width: 768px) {
+            .chart {
+                background: rgba(255, 255, 255, .9);
+                width: 65vw;
+                height: 300px;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                margin: 0 24px 24px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="map" class="map"></div>
+        <figure class="chart">
+            <figcaption>
+                <h2 class="chart-headline">Annual loss</h2>
+            </figcaption>
+            <div id="chart" class="chart__container"></div>
+        </figure>
+    </div>
+    <script src="papua-map.min.js"></script>
+    <script type="module">
+        import { initFrame } from 'https://unpkg.com/@newswire/frames/dist/index.mjs';
+        window.addEventListener("DOMContentLoaded", function (e) {
+            initFrame();
+        })
+    </script>
+
+</body>
+
+</html>
