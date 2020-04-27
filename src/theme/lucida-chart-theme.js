@@ -2,28 +2,30 @@ import { colors } from "./lucida-colors.js";
 
 // THIS IS THE "UNIVERSAL" CHART THEME
 
+const colorText = colors.blackPrimary;
+
 export const lucidaChartTheme = {
   chart: {
     backgroundColor: "transparent",
     style: {
       fontFamily: '"Lato", "Helvetica", "Arial", sans-serif',
-      color: colors.textMain
-    }
+      color: colorText,
+    },
   },
   title: {
     align: "left",
     style: {
-      fontWeight: "bold"
-    }
+      fontWeight: "bold",
+    },
   },
   subtitle: {
     align: "left",
     style: {
-      color: colors.textLight
-    }
+      color: colorText,
+    },
   },
   legend: {
-    layout: "horizontal"
+    layout: "horizontal",
   },
   xAxis: {
     gridLineColor: colors.white,
@@ -31,27 +33,27 @@ export const lucidaChartTheme = {
     tickColor: colors.white,
     title: {
       style: {
-        color: colors.textLight
-      }
-    }
+        color: colorText,
+      },
+    },
   },
   yAxis: {
     gridLineColor: colors.white,
     lineColor: colors.white,
     tickColor: colors.white,
     title: {
-      style: { color: colors.textLight }
-    }
+      style: { color: colorText },
+    },
   },
   credits: {
     position: {
       align: "left",
       x: 0,
-      y: 0
+      y: 0,
     },
     style: {
-      color: colors.textLight,
-      fontSize: "13px"
-    }
-  }
+      color: colorText,
+      fontSize: "13px",
+    },
+  },
 };
