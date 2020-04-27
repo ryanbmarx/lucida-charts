@@ -41,7 +41,7 @@
     "autobuild": "rollup -c -w",
     "build": "rollup -c",
     "build:styles": "postcss src/css/*.css --dir public/css",
-    "dev": "run-p start:dev autobuild watch:styles",
+    "dev": "run-p start:dev autobuild watch:*",
     "start": "sirv public --single",
     "start:dev": "sirv public --single --dev",
     "static": "mkdir -p public/narratives && cp -rf src/narratives/**/*.html public/narratives",
