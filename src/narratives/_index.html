@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>iframe</title>
+
+    <link rel="stylesheet" href="css/global.css" />
+    <!-- <script src="https://unpkg.com/@newswire/frames/dist/index.umd.js"></script> -->
+
+    <style>
+        .chart {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: flex-start;
+            height: 100%;
+        }
+
+        .chart__middle {
+            flex: 1 1;
+        }
+
+        [data-frame-src] {
+            min-height: 300px;
+        }
+
+        @media all and (min-width:992px) {
+
+            [data-frame-src]:not(.no-flex),
+            [data-frame-src]:not(.no-flex) iframe {
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="chart">
+        <div class="chart__top">
+            <h1>This is a test of iframes</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, pariatur dolorem recusandae, consequuntur
+                in
+                minus vero cum sed iste exercitationem quia laboriosam quos cumque quae soluta fugiat numquam laborum
+                quas.</p>
+        </div>
+        <div class="chart__middle">
+            <div data-frame-src="/narratives/2020-04-papua-deforestation/papua-map/index.html" data-frame-title="XXX"
+                data-frame-sandbox="allow-scripts allow-same-origin"></div>
+        </div>
+        <div class="chart__bottom"></div>
+    </div>
+
+    <script type="module">
+        import { autoInitFrames } from 'https://unpkg.com/@newswire/frames/dist/index.mjs';
+
+        window.addEventListener("DOMContentLoaded", function (e) {
+            autoInitFrames();
+        })
+    </script>
+</body>
+
+</html>

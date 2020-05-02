@@ -69,9 +69,14 @@ export default [
   {
     input: "src/narratives/2020-04-papua-deforestation/papua-map/papua-map.js",
     output: {
+      external: ["mapboxgl", "Highcharts"],
+      globals: {
+        mapboxgl: "mapboxgl",
+        Highcharts: "highcharts",
+      },
       sourcemap: true,
       format: "iife",
-      name: "base",
+      name: "papua",
       file: "public/narratives/2020-04-papua-deforestation/papua-map/papua-map.min.js",
     },
     ...options,
