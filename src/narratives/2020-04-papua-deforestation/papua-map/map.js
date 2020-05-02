@@ -20,10 +20,21 @@ export function initMap() {
   const sw = { lat: "-9.418022518884769", lng: "132.19535372656105" };
   map.fitBounds([ne, sw]);
 
+  // Add UI
+  map.addControl(new mapboxgl.NavigationControl());
+
   // Add our markers
   for (let m of markers) {
     const popup = makePopup(m);
-    const marker = new mapboxgl.Marker().setLngLat(m.coord).setPopup(popup).addTo(map);
+
+    // create a HTML element for each feature
+    const el = getMapPin();
+    const mapOptions = {
+      element: el,
+      offset: 0,
+      anchor: "bottom",
+    };
+    const marker = new mapboxgl.Marker(mapOptions).setLngLat(m.coord).setPopup(popup).addTo(map);
   }
 
   function makePopup(m) {
@@ -31,7 +42,24 @@ export function initMap() {
     const avg = formatter(0.022);
     const loss = formatter(m.loss);
     return new mapboxgl.Popup().setHTML(
-      `<p class="tooltip-text">${m.label} had a relative tree cover loss of <strong>${loss}</strong> compared to an average of <strong>${avg}</strong>.</p>`
+      `<p class="tooltip-text"><strong>${m.label.toUpperCase()}</strong> had a relative tree cover loss of <strong>${loss}</strong> compared to an average of <strong>${avg}</strong>.</p>`
     );
   }
+}
+
+function getMapPin(classes = []) {
+  const pin = document.createElement("div");
+  pin.classList.add("pin");
+  if (classes.length) {
+    classes.forEach((c) => pin.classList.add(c));
+  }
+  const pinBody = document.createElement("div");
+  pinBody.classList.add("pin__body");
+  pin.appendChild(pinBody);
+
+  // const pinPulse = document.createElement("div");
+  // pinPulse.classList.add("pin__pulse");
+  // pin.appendChild(pinPulse);
+
+  return pin;
 }

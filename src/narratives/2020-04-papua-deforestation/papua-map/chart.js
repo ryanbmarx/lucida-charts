@@ -64,8 +64,6 @@ export function initChart() {
       });
     })
     .then((data) => {
-      console.log(data);
-
       options.series = [
         {
           data: data.map((d) => {
