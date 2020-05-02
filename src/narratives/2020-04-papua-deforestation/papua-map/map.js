@@ -1,6 +1,7 @@
 import mapboxgl from "mapbox-gl";
 import { format } from "d3-format";
-
+import { colors } from "../../../theme/lucida-colors";
+import provinces from "./geo/indonesia-province-simple.json"
 import markers from "./geo/markers.json";
 
 export function initMap() {
@@ -36,6 +37,23 @@ export function initMap() {
       };
       const marker = new mapboxgl.Marker(mapOptions).setLngLat(m.coord).setPopup(popup).addTo(map);
     }
+
+    // Add our boundaries
+    map.addSource('provinces', {
+      type: "geojson",
+      data: provinces
+    });
+    map.addLayer({
+      'id': 'provinces',
+      'type': 'line',
+      'source': "provinces",
+      'layout': {},
+      'paint': {
+        "line-width": 2,
+        'line-color': colors.gold,
+        "line-opacity": 0.75
+      }
+    });
   })
 }
 

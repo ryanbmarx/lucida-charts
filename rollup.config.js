@@ -58,18 +58,39 @@ const options = {
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
-    production && terser(),
+    terser(),
   ],
   watch: {
     clearScreen: false,
   },
 };
 
+
+const deps = {
+  Highcharts: "https://code.highcharts.com/highcharts.js",
+  mapboxgl: "https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js"
+}
+
 export default [
   {
-    input: "src/narratives/2020-04-papua-deforestation/papua-map/papua-map.js",
+    input: "src/narratives/2020-04-papua-deforestation/mills/papua-mills.js",
+    external: ["mapboxgl", "Highcharts"],
     output: {
-      external: ["mapboxgl", "Highcharts"],
+      globals: {
+        mapboxgl: "mapboxgl",
+        Highcharts: "highcharts",
+      },
+      sourcemap: true,
+      format: "iife",
+      name: "papua",
+      file: "public/narratives/2020-04-papua-deforestation/mills/papua-mills.min.js",
+    },
+    ...options,
+  },
+  {
+    input: "src/narratives/2020-04-papua-deforestation/papua-map/papua-map.js",
+    external: ["mapboxgl", "Highcharts"],
+    output: {
       globals: {
         mapboxgl: "mapboxgl",
         Highcharts: "highcharts",

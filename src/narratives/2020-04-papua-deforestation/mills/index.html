@@ -1,0 +1,102 @@
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Mills in Papua | Lucida</title>
+    <script async src='https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="../../../css/global.css">
+    <style>
+        .container {
+            --map-z-index: 1;
+            background: #eee;
+            display: flex;
+            flex-flow: column nowrap;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            min-height: 400px;
+
+        }
+
+        .map {
+            flex: 2 2;
+            background: black;
+            display: flex;
+            z-index: var(--map-z-index, 1);
+        }
+
+        .chart {
+            box-sizing: border-box;
+            padding: 16px;
+            margin: 0;
+            flex: 1 1;
+        }
+
+        .chart__container {
+            height: 100%;
+        }
+
+        .pin .pin__body {
+            background-image: url("../../../icons/palm.svg");
+
+        }
+
+        @media all and (min-width: 768px) {
+            .chart {
+                background: rgba(255, 255, 255, .9);
+                width: 380px;
+                height: 230px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                margin: 24px;
+                z-index: calc(var(--map-z-index, 1) + 1);
+            }
+
+            .legend {
+                position: absolute;
+                top: 24px;
+                left: 24px;
+                padding: 8px;
+                background: rgba(255, 255, 255, 0.9);
+                z-index: calc(var(--map-z-index, 1) + 1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul class="legend legend--left">
+            <li>
+                <div class='pin'>
+                    <div class="pin__body"></div>
+                    <div class="pin__pulse"></div>
+                </div>
+                Mill location
+            </li>
+        </ul>
+        <div id="map" class="map"></div>
+        <!-- <figure class="chart">
+            <figcaption>
+                <h2 class="chart-headline">Annual tree cover loss</h2>
+            </figcaption>
+            <div id="chart" class="chart__container"></div>
+        </figure> -->
+    </div>
+    <script src="papua-mills.min.js"></script>
+    <!-- <script type="module">
+        import { initFrame } from 'https://unpkg.com/@newswire/frames/dist/index.mjs';
+        window.addEventListener("DOMContentLoaded", function (e) {
+            initFrame();
+        })
+    </script> -->
+</body>
+
+</html>
