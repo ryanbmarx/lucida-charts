@@ -14,14 +14,22 @@ html body {
   --textMain: #606060;
   --textLight: #888888;
   /* KURT */
+
   --green-light: #60b993;
   --pink-base: #9e005d;
   --tan-primary: #e2e0d7;
+  --tan-base: var(--tan-primary);
+  --tan-light: #f5f4f1;
   --tan-medium: #e5e2e0;
+  --tan-dark: #bcb9ae;
   --black-primary: #1d1e1b;
   --backgroundMain: #ececec;
   --backgroundLightAccent: #f3f3f3;
   --backgroundDarkAccent: #e5e5e5;
+
+  /* Me */
+  --gold: #fdb76a;
+
   --chart-text: var(--black-primary);
   --min-height: 410px;
 }

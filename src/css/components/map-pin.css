@@ -1,0 +1,27 @@
+.pin {
+  --pin-width: 25px;
+  --pin-height: 30px;
+
+  width: var(--pin-width, 30px);
+  height: var(--pin-height, 30px);
+  &::after {
+    content: "";
+    display: block;
+    width: calc(0.5 * var(--pin-width, 30px));
+    height: calc(0.25 * var(--pin-height, 30px));
+    margin: -1px auto 0 auto;
+    background-color: var(--gold);
+    -webkit-clip-path: polygon(0 0, 100% 0, 50% 100%);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+  }
+}
+
+.pin__body {
+  width: var(--pin-width, 30px);
+  height: calc(0.75 * var(--pin-height, 30px));
+  background-color: var(--gold);
+  background-size: contain;
+  background-position: center;
+
+  z-index: 11;
+}

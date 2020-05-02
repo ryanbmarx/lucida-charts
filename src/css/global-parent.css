@@ -1,0 +1,10 @@
+[data-frame-src] {
+  min-height: 410px;
+}
+
+@media all and (min-width: 992px) {
+  [data-frame-src]:not(.no-flex),
+  [data-frame-src]:not(.no-flex) iframe {
+    height: 100%;
+  }
+}
