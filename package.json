@@ -45,7 +45,7 @@
     "dev": ". .env && run-p start:dev autobuild watch:*",
     "start": "sirv public --single",
     "start:dev": "sirv public --single --dev",
-    "static": "mkdir -p public/narratives && cp -rf src/narratives/**/*.html public/narratives",
+    "static": "mkdir -p public/narratives && cp -rf src/narratives/**/*.html public/narratives && cp -rf src/static/* public/ ",
     "watch:html": "node scripts/watch-html.js",
     "watch:styles": "postcss src/css/*.css --dir public/css --watch --verbose --map"
   },

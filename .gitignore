@@ -6,6 +6,9 @@ public/**/*.js
 public/**/*.map
 public/**/*.css
 public/**/*.csv
+public/**/*.svg
+public/**/*.png
+public/**/*.jpg
 docs/
 .env
 public/css/
