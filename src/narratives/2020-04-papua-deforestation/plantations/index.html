@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Deforestation in Papua | Lucida</title>
+
+    <script async src="https://code.highcharts.com/highcharts.js"></script>
+    <link rel="stylesheet" href="../../../css/global.css">
+    <style>
+        .chart {
+            background: #eee;
+            display: flex;
+            flex-flow: column nowrap;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            min-height: 400px;
+        }
+
+        .chart__container .legend__dot {
+            display: inline-block;
+        }
+
+        .chart__container {
+            flex: 1 1;
+            height: 100%;
+        }
+
+        .legend__dot--natural {
+            background-color: var(--green-light);
+        }
+
+        .legend__dot--plantation {
+            background-color: var(--gold);
+        }
+    </style>
+</head>
+
+<body>
+
+    <figure class="chart">
+        <figcaption>
+            <ul class="legend legend--left">
+                <li>
+                    <span class='legend__dot legend__dot--natural'></span>
+                    Natural forest tree cover loss
+                </li>
+
+                <li>
+                    <span class='legend__dot legend__dot--plantation'></span>
+                    Plantation tree cover loss
+                </li>
+            </ul>
+        </figcaption>
+        <div id="chart" class="chart__container"></div>
+    </figure>
+    </div>
+    <script src="plantations.min.js"></script>
+</body>
+
+</html>

@@ -43,8 +43,9 @@
         }
 
         .pin .pin__body {
-            background-image: url("../../../icons/palm.svg");
-
+            background-image: url("../../../icons/saw.svg");
+            background-size: 80%;
+            background-repeat: no-repeat;
         }
 
         @media all and (min-width: 768px) {
@@ -75,28 +76,23 @@
     <div class="container">
         <ul class="legend legend--left">
             <li>
-                <div class='pin'>
+                <div class='pin pin--rspo'>
                     <div class="pin__body"></div>
                     <div class="pin__pulse"></div>
                 </div>
-                Mill location
+                RSPO-certified mill
+            </li>
+            <li>
+                <div class='pin pin--non-rspo'>
+                    <div class="pin__body"></div>
+                    <div class="pin__pulse"></div>
+                </div>
+                non-RSPO-certified mill
             </li>
         </ul>
         <div id="map" class="map"></div>
-        <!-- <figure class="chart">
-            <figcaption>
-                <h2 class="chart-headline">Annual tree cover loss</h2>
-            </figcaption>
-            <div id="chart" class="chart__container"></div>
-        </figure> -->
     </div>
     <script src="papua-mills.min.js"></script>
-    <!-- <script type="module">
-        import { initFrame } from 'https://unpkg.com/@newswire/frames/dist/index.mjs';
-        window.addEventListener("DOMContentLoaded", function (e) {
-            initFrame();
-        })
-    </script> -->
 </body>
 
 </html>

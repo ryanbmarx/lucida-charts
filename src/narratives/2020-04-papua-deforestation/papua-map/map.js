@@ -1,7 +1,7 @@
 import mapboxgl from "mapbox-gl";
 import { format } from "d3-format";
 import { colors } from "../../../theme/lucida-colors";
-import provinces from "./geo/indonesia-province-simple.json"
+import provinces from "../../../geo/indonesia-province-simple.json"
 import markers from "./geo/markers.json";
 
 export function initMap() {

@@ -3,7 +3,7 @@
 @import "./components/legend.css";
 @import "./components/map-pin.css";
 @import "./components/profile-link.css";
-
+@import "./components/mapbox-tweaks.css";
 html body {
   margin: 0;
   padding: 0 0 0 0;

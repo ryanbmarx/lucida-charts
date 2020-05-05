@@ -5,6 +5,6 @@ import { initFrame } from "@newswire/frames";
 document.addEventListener("DOMContentLoaded", function (e) {
     console.log("Mills DOMContent is loaded");
     initFrame();
-    // initMap();
+    initMap();
     // initChart();
 });

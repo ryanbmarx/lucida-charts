@@ -73,12 +73,35 @@ const deps = {
 
 export default [
   {
+    input: "src/narratives/2020-04-papua-deforestation/company-land-loss/land-loss.js",
+    output: {
+      sourcemap: true,
+      format: "iife",
+      name: "papua",
+      file: "public/narratives/2020-04-papua-deforestation/company-land-loss/land-loss.min.js",
+    },
+    ...options,
+  },
+  {
+    input: "src/narratives/2020-04-papua-deforestation/plantations/plantations.js",
+    external: ["Highcharts"],
+    output: {
+      globals: {
+        Highcharts: "highcharts",
+      },
+      sourcemap: true,
+      format: "iife",
+      name: "papua",
+      file: "public/narratives/2020-04-papua-deforestation/plantations/plantations.min.js",
+    },
+    ...options,
+  },
+  {
     input: "src/narratives/2020-04-papua-deforestation/mills/papua-mills.js",
-    external: ["mapboxgl", "Highcharts"],
+    external: ["mapboxgl"],
     output: {
       globals: {
         mapboxgl: "mapboxgl",
-        Highcharts: "highcharts",
       },
       sourcemap: true,
       format: "iife",

@@ -18,3 +18,19 @@
   margin: 0 0 16px 0;
   padding: 0;
 }
+
+%highlighted-text {
+  padding: 0 0.25em;
+}
+
+.text--rspo {
+  @extend %highlighted-text;
+  background-color: var(--rspo-color);
+  color: black;
+}
+
+.text--non-rspo {
+  @extend %highlighted-text;
+  background-color: var(--non-rspo-color);
+  color: black;
+}

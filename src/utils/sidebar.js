@@ -5,7 +5,7 @@ import { format } from "./format.js";
  * @param {[]} data Requires data = [{ label: "BlackRock", value: 1533193730.0 }, ...]
  */
 
-export function sidebar(data, maxValue) {
+export function sidebar(data, maxValue, formatter) {
   let chart = document.createElement("ol");
   chart.classList.add("sidebar");
   let max;
@@ -14,6 +14,9 @@ export function sidebar(data, maxValue) {
   } else {
     max = maxValue;
   }
+
+  if (!formatter) formatter = format;
+
   data.forEach((d) => {
     const row = document.createElement("li");
     row.classList.add("sidebar__row");
@@ -23,7 +26,7 @@ export function sidebar(data, maxValue) {
     row.innerHTML = `<p class="sidebar__label"><a class="profile-link" href="#">${d.label}</a></p>
     <div class="sidebar__bar ${labelClass}">
       <div style="width:${width}%;" class="sidebar__bar-inner">
-        <span>${format(d.value)}</span>
+        <span>${formatter(d.value)}</span>
       </div>
     </div>`;
     chart.appendChild(row);
