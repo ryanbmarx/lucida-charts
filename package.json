@@ -13,6 +13,8 @@
     "chokidar": "^3.4.0",
     "colors": "^1.4.0",
     "cssnano": "^4.1.10",
+    "directory-tree": "^2.2.4",
+    "glob": "^7.1.6",
     "gulp-cli": "^2.2.0",
     "mkdirp": "^1.0.4",
     "npm-run-all": "^4.1.5",
@@ -40,13 +42,16 @@
   },
   "scripts": {
     "autobuild": "rollup -c -w",
-    "build": "rollup -c",
+    "build": "run-p build:*",
+    "build:html": "node scripts/build-html.js",
+    "build:js": "rollup -c",
+    "build:static": "mkdir -p public/narratives && cp -rf src/static/* public/ ",
     "build:styles": "postcss src/css/*.css --dir public/css",
     "dev": ". .env && run-p start:dev autobuild watch:*",
+    "index": "node scripts/main-index.js",
     "start": "sirv public --single",
     "start:dev": "sirv public --single --dev",
-    "static": "mkdir -p public/narratives && cp -rf src/narratives/**/*.html public/narratives && cp -rf src/static/* public/ ",
-    "watch:html": "node scripts/watch-html.js",
+    "watch:html": "node scripts/build-html.js --watch",
     "watch:styles": "postcss src/css/*.css --dir public/css --watch --verbose --map"
   },
   "browserslist": "> 0.25%, not dead"
