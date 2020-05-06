@@ -2,36 +2,61 @@
   import { onMount } from "svelte";
 
   export let pages;
-    let links;
 
-  onMount(() => {
-      window.pages = pages;
-      console.log(pages)
-      buildPages(pages);
-  });
+onMount(()=>{
+    console.log(pages)
+})
 
 
-  function buildPages(data){
-      
-      if (data.children.length > 0){
-          for (let i=0; i< data.children.length; i++){
-            const c = data.children[i];
-            links.innerHTML += `<h2>${c.name}</h2><ul><li>XXX</li>`;
-            for (let i=0; i< c.children.length; i++) {
-                const cc = c.children[i];
-                const path = cc.path.replace("public", "")
-                links.innerHTML += `<li><a href="${path}/index.html">${cc.name}</a></li>`
-                if (i === c.children.length - 1) links.innerHTML += "</ul>"
-            };
-        }
-      } 
-  }
 </script>
 
 <style>
+.narratives{
+    list-style:none;
+    margin: 0;
+    padding: 0;
+}
 
+.narratives a {
+    text-decoration: none;
+}
+.narratives h2{
+    font: bold 28px/1.3em "Playfair Display", serif;
+    padding-bottom: 8px;
+    margin: 2rem 0 8px 0;
+    border-bottom: 1px solid #aaa;
+}
+
+.narrative{
+    margin: 1em 0;
+    font: 16px/1.3em "Lato", sans-serif;
+    list-style:disc;
+}
 </style>
 
 <h1>Lucida Narratives</h1>
 
-<div bind:this={links}></div>
+<ul class="narratives">
+{#each pages.children as narrative}
+<li>
+{#if narrative.extension}
+    <h2><a href="{narrative.path.replace('public','')}">{narrative.name}</a></h2>
+{:else}
+    <h2>{narrative.name}</h2>
+    {#if narrative.children}
+    <ul class="narrative">
+        {#each narrative.children as graphic}
+            <li>
+            {#if graphic.name && graphic.extension}
+                <a href="{graphic.path.replace('public/', '')}">{graphic.name}</a>
+            {:else}
+                <a href="{graphic.path.replace('public/', '')}/index.html">{graphic.name}</a>
+            {/if}
+            </li>
+        {/each}
+    </ul>
+    {/if}    
+{/if}
+</li>
+{/each}
+</ul>
