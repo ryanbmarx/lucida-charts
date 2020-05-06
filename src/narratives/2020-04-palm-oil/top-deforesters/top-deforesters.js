@@ -1,7 +1,10 @@
 import { getMax } from "../../../utils/get-max";
 import { sidebar } from "../../../utils/sidebar";
+import { initFrame } from "@newswire/frames";
+
 
 document.addEventListener("DOMContentLoaded", function (e) {
+  initFrame();
   const data = [
     { label: "BlackRock", value: 1533193730.0 },
     { label: "Vanguard", value: 1226957752.0 },

@@ -1,6 +1,7 @@
 import Highcharts from "highcharts";
 import { lucidaChartTheme } from "../../../theme/lucida-chart-theme";
 import { colors } from "../../../theme/lucida-colors";
+import { initFrame } from "@newswire/frames";
 
 function parseCSV(text) {
   const lines = text.split("\n");
@@ -20,6 +21,8 @@ function parseCSV(text) {
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
+  initFrame();
+
   fetch("climate-advisers-better.csv")
     .then((resp) => resp.text())
     .then((text) => parseCSV(text))
