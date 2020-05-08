@@ -1,96 +1,90 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf8" />
     <meta name="viewport" content="width=device-width" />
 
     <title>Lucida charts</title>
-    <link href="../../../css/global.css" rel="stylesheet">
-    <link href="../../../css/sidebar.css" rel="stylesheet">
-    <!-- <script src="https://unpkg.com/@newswire/frames/dist/index.umd.js"></script> -->
+    <link href="../../../css/global.css" rel="stylesheet" />
+    <link href="../../../css/sidebar.css" rel="stylesheet" />
 
     <style>
-        html,
-        body {
-            --rspo-color: var(--green-light);
-            --non-rspo-color: var(--pink-base);
-            margin: 0;
-            padding: 0;
-        }
+      html,
+      body {
+        --rspo-color: var(--green-light);
+        --non-rspo-color: var(--pink-base);
+        margin: 0;
+        padding: 0;
+      }
 
-        .chart-sublabel {
-            font: bold 12px/18px var(--fonts-sans-serif);
-            color: var(--black-primary);
-            border-bottom: 4px solid var(--black-primary);
-            padding: 0 0 8px 0;
-            margin: 0 0 16px 0;
-        }
+      .chart-sublabel {
+        font: bold 12px/18px var(--fonts-sans-serif);
+        color: var(--black-primary);
+        border-bottom: 4px solid var(--black-primary);
+        padding: 0 0 8px 0;
+        margin: 0 0 16px 0;
+      }
 
-        .container__subchart {
-            margin: 0 0 16px 0;
-        }
+      .container__subchart {
+        margin: 0 0 16px 0;
+      }
 
-        .container__subchart:last-of-type {
-            margin: 0;
-        }
+      .container__subchart:last-of-type {
+        margin: 0;
+      }
 
-        .sidebar__label,
-        .no-data {
-            font: bold 9px/18px var(--fonts-sans-serif);
+      .sidebar__label,
+      .no-data {
+        font: bold 9px/18px var(--fonts-sans-serif);
+      }
 
-        }
+      .legend__dot--non,
+      .sidebar__bar-inner {
+        background: var(--non-rspo-color);
+      }
 
-        .legend__dot--non,
-        .sidebar__bar-inner {
-            background: var(--non-rspo-color);
-        }
+      .sidebar__bar-inner span {
+        color: black;
+      }
 
-        .sidebar__bar-inner span {
-            color: white;
-        }
+      .legend__dot--rspo,
+      .sidebar__row--highlight .sidebar__bar-inner {
+        background: var(--rspo-color);
+      }
 
-        .legend__dot--rspo,
-        .sidebar__row--highlight .sidebar__bar-inner {
-            background: var(--rspo-color);
-        }
+      .sidebar__row--highlight .sidebar__bar-inner span {
+        color: var(--black-primary);
+      }
 
-        .sidebar__row--highlight .sidebar__bar-inner span {
-            color: var(--black-primary)
-        }
-
-        .sidebar__bar--label-outside span {
-
-            color: var(--chart-text) !important;
-        }
+      .sidebar__bar--label-outside span {
+        color: var(--chart-text) !important;
+      }
     </style>
 
     <script src="dirty-palm-oil.min.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <ul class="legend legend--left">
-        <li>
-            <span class="legend__dot legend__dot--rspo"></span>
-            RSPO member
-        </li>
-        <li>
-            <span class="legend__dot legend__dot--non"></span>
-            Not a RSPO member
-        </li>
-
+      <li>
+        <span class="legend__dot legend__dot--rspo"></span>
+        RSPO member
+      </li>
+      <li>
+        <span class="legend__dot legend__dot--non"></span>
+        Not a RSPO member
+      </li>
     </ul>
     <div id="container" />
     <!-- <script>
         window.newswireFrames.initFrameAndPoll();
     </script> -->
     <script type="module">
-        import { initFrame } from 'https://unpkg.com/@newswire/frames/dist/index.mjs';
+      import { initFrame } from "https://unpkg.com/@newswire/frames/dist/index.mjs";
 
-        window.addEventListener("DOMContentLoaded", function (e) {
-            initFrame();
-        })
+      window.addEventListener("DOMContentLoaded", function (e) {
+        initFrame();
+      });
     </script>
-</body>
-
+  </body>
 </html>
