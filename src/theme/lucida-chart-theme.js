@@ -13,16 +13,21 @@ export const lucidaChartTheme = {
     },
   },
   title: {
+    text: "",
     align: "left",
     style: {
       fontWeight: "bold",
     },
   },
   subtitle: {
+    text: "",
     align: "left",
     style: {
       color: colorText,
     },
+  },
+  credits: {
+    text: "",
   },
   legend: {
     layout: "horizontal",

@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Chinese palm oil imports | Lucida</title>
+    <script async src="https://code.highcharts.com/highcharts.js"></script>
+    <script async src="https://code.highcharts.com/modules/treemap.js"></script>
+    <script async src="https://code.highcharts.com/modules/heatmap.js"></script>
+    <!-- <script async src="https://code.highcharts.com/modules/annotations.js"></script> -->
+    
+
+    <link rel="stylesheet" href="../../../css/global.css" />
+    <style>
+      #china-imports {
+        width: 100%;
+        flex: 1 1;
+        margin: 0 0 24px 0;
+      }
+
+      .container{
+        flex-flow: column
+      }
+
+      @media all and (min-width: 459px) {
+        #china-imports {
+        margin:0;
+      }
+
+        .categories-container {
+          position: absolute;
+          top: 0;
+          left: 100px;
+          width: 55vw;
+          /* background: #e0e0e0; */
+          box-sizing: border-box;
+          /* padding: 16px; */
+        }
+        
+        #china-categories{
+          border: 1px solid red;
+          height: 200px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="china-imports"></div>
+      <div class="categories-container">
+        <h2 class="chart-headline">China's palm oil imports, 2018</h2>      
+        <div id="china-categories"></div>
+      </div>
+    <script src="imports.min.js"></script>
+  </body>
+</html>

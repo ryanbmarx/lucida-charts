@@ -28,7 +28,8 @@ html body {
   --backgroundLightAccent: #f3f3f3;
   --backgroundDarkAccent: #e5e5e5;
   /* Me */
-  --gold: #fdb76a;
+  /* --gold: #fdb76a; */
+  --gold: #ce9f2e;
   --green-extra-light: #bfcca1;
   /* UTILS */
   --rspo-color: var(--green-light);
