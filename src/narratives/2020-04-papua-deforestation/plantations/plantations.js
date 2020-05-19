@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
   const options = {
     plotOptions: {
       column: {
-        stacking: 'normal',
+        stacking: "normal",
         dataLabels: {
-          enabled: false
+          enabled: false,
         },
         pointPadding: 0,
         borderWidth: 0,
@@ -29,21 +29,23 @@ document.addEventListener("DOMContentLoaded", function (e) {
       shared: true,
       useHTML: true,
       formatter: function () {
-        console.log(this);
-
         const total = pointFormatter(this.points[0].total);
-        let tooltip = `<table style="width: 300px;"><tr><td>${Highcharts.dateFormat("%Y", this.x)}</td></tr>`;
+        let tooltip = `<table style="width: 300px;"><tr><td>${Highcharts.dateFormat(
+          "%Y",
+          this.x
+        )}</td></tr>`;
         for (let i = 0; i < this.points.length; i++) {
           const p = this.points[i];
           console.log(p.y, total);
           tooltip += `<tr>
-          <td><span style="background-color:${p.series.color};"class="legend__dot"></span>${p.series.name}</td>
+          <td><span style="background-color:${
+            p.series.color
+          };"class="legend__dot"></span>${p.series.name}</td>
           <td>${pointFormatter(p.y)} ha</td></tr>`;
-        };
-        tooltip += `<tr><td><strong>Total</strong></td><td><strong>${total} ha</strong></td></tr></table>`
+        }
+        tooltip += `<tr><td><strong>Total</strong></td><td><strong>${total} ha</strong></td></tr></table>`;
         return tooltip;
       },
-
     },
     chart: {
       type: "column",
@@ -72,8 +74,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
   };
 
   fetch("treecover_loss__ha.csv")
-    .then((resp) => resp.text())
-    .then((text) => {
+    .then(resp => resp.text())
+    .then(text => {
       return csvParse(text, function (d) {
         return {
           year: new Date(+d.year, 0, 1).getTime(),
@@ -83,10 +85,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
         };
       });
     })
-    .then((data) => {
+    .then(data => {
       options.series = [
         {
-          data: data.map((d) => {
+          data: data.map(d => {
             return [d.year, d.plantation];
           }),
           name: "Plantation tree cover",
@@ -94,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
           color: colors.greenLight,
         },
         {
-          data: data.map((d) => {
+          data: data.map(d => {
             return [d.year, d.natural];
           }),
           name: "Natural tree cover",

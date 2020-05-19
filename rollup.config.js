@@ -129,6 +129,44 @@ export default [
   },
   {
     input:
+      "src/narratives/2020-04-papua-deforestation/tree-loss-province/tree-loss-province.js",
+    external: ["Highcharts", "Treemap", "Heatmap"],
+
+    output: {
+      globals: {
+        Highcharts: "highcharts",
+        Treemap: "highcharts/modules/treemap",
+        Heatmap: "highcharts/modules/heatmap",
+      },
+      sourcemap: true,
+      format: "iife",
+      name: "papua",
+      file:
+        "public/narratives/2020-04-papua-deforestation/tree-loss-province/tree-loss-province.min.js",
+    },
+    ...options,
+  },
+  {
+    input:
+      "src/narratives/2020-04-papua-deforestation/forest-loss-region/forest-loss-region.js",
+    external: ["Highcharts", "Treemap", "Heatmap"],
+
+    output: {
+      globals: {
+        Highcharts: "highcharts",
+        Treemap: "highcharts/modules/treemap",
+        Heatmap: "highcharts/modules/heatmap",
+      },
+      sourcemap: true,
+      format: "iife",
+      name: "papua",
+      file:
+        "public/narratives/2020-04-papua-deforestation/forest-loss-region/forest-loss-region.min.js",
+    },
+    ...options,
+  },
+  {
+    input:
       "src/narratives/2020-04-papua-deforestation/plantations/plantations.js",
     external: ["Highcharts"],
     output: {
@@ -171,6 +209,41 @@ export default [
       name: "papua",
       file:
         "public/narratives/2020-04-papua-deforestation/papua-map/papua-map.min.js",
+    },
+    ...options,
+  },
+  {
+    input: "src/narratives/2020-04-papua-deforestation/carbon/carbon.js",
+    external: ["mapboxgl", "Highcharts"],
+    output: {
+      globals: {
+        mapboxgl: "mapboxgl",
+        Highcharts: "highcharts",
+        turf: "@turf/turf",
+      },
+      sourcemap: true,
+      format: "iife",
+      name: "papua",
+      file:
+        "public/narratives/2020-04-papua-deforestation/carbon/carbon.min.js",
+    },
+    ...options,
+  },
+  {
+    input:
+      "src/narratives/2020-04-papua-deforestation/deforestation-hotspots/deforestation-hotspots.js",
+    external: ["mapboxgl", "Highcharts"],
+    output: {
+      globals: {
+        mapboxgl: "mapboxgl",
+        Highcharts: "highcharts",
+        turf: "@turf/turf",
+      },
+      sourcemap: true,
+      format: "iife",
+      name: "papua",
+      file:
+        "public/narratives/2020-04-papua-deforestation/deforestation-hotspots/deforestation-hotspots.min.js",
     },
     ...options,
   },

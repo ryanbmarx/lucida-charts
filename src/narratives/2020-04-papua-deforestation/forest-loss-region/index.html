@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Papua forest loss by region</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script async src="https://code.highcharts.com/highcharts.js"></script>
+    <link href="../../../css/global.css" rel="stylesheet" />
+    <style>
+      .legend__dot {
+        background-color: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul class="legend legend--left">
+      <li>
+        <span class="legend__dot legend__dot--line"></span>
+        Papua/Papua Barat
+      </li>
+    </ul>
+    <div id="container" style="min-height: var(--min-height); height: 100vh;" />
+    <script src="forest-loss-region.min.js"></script>
+  </body>
+</html>
