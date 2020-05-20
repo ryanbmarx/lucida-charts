@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+body {
+  background-color: #f5f4f1;
+}
+#viz_palmoil {
+  margin: 0 auto;
+  max-width: 700px;
+  position: relative;
+}
+h2 {
+  font-size: 18px;
+  font-family: "Lato", Helvetica, sans-serif;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+p,
+text {
+  margin-top: 0;
+  font-size: 0.9em;
+  color: #625f5d;
+  line-height: 1.5;
+}
+.labels text {
+  font-family: "Lato", Helvetica, sans-serif;
+  font-size: 0.8rem;
+  fill: #625f5d;
+  line-height: 1.5;
+}
+
+.container svg rect {
+  fill: #60b993;
+  stroke-width: 0.75px;
+  stroke: #f5f4f1;
+}
+.container svg rect:hover {
+  fill: #333;
+}
+
+.domain {
+  display: none;
+}
+.tick line {
+  stroke-width: 1px;
+  stroke: #625f5d;
+}
+
+.d3-tip {
+  line-height: 1;
+  padding: 6px;
+  background: #333;
+  color: #fff;
+  font-family: "Lato", Helvetica, sans-serif;
+
+  font-size: 12px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 0.9rem;
+  width: 100%;
+  line-height: 1;
+  color: #333;
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips specifically */
+.d3-tip.n:after {
+  margin: -2px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+.test {
+  margin: 0 auto;
+  display: block;
+  background: #333;
+  font-family: "Lato", Helvetica, sans-serif;
+  width: fit-content;
+}
+.test p {
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+}
+.small,
+.test {
+  display: none;
+}
+.full {
+  display: block;
+}
+@media only screen and (max-width: 600px) {
+  .small,
+  .test {
+    display: block;
+  }
+  .full {
+    display: none;
+  }
+}

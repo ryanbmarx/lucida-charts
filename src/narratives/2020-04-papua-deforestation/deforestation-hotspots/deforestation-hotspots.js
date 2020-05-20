@@ -123,8 +123,10 @@ function buildLegend(scale) {
     const li = document.createElement("li");
     const dot = document.createElement("span");
     dot.classList.add("legend__dot", `legend__dot--${l}`);
-    dot.style.width = `${scale(l)}px`;
-    dot.style.height = `${scale(l)}px`;
+    dot.style.minWidth = `${scale(l)}px`;
+    dot.style.minHeight = `${scale(l)}px`;
+    dot.style.maxWidth = `${scale(l)}px`;
+    dot.style.maxHeight = `${scale(l)}px`;
     li.appendChild(dot);
     li.innerHTML += `${formatter(l)} hectares`;
     if (index === 0) li.innerHTML += " of tree cover lost";
