@@ -1,7 +1,7 @@
 .numbers {
   height: 100%;
   z-index: 1;
-  min-height: 800px;
+  /* min-height: 800px; */
 }
 
 .numbers::after {

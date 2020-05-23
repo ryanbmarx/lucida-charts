@@ -25,18 +25,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
       spacingLeft: 0,
       spacingRight: 0,
     },
-    plotOptions: {
-      column: {
-        stacking: "normal",
-        dataLabels: {
-          enabled: false,
-        },
-        pointPadding: 0,
-        borderWidth: 0,
-        groupPadding: 0.1,
-        shadow: false,
-      },
-    },
+    plotOptions: {},
     legend: { enabled: false },
     tooltip: tooltip,
     xAxis: {

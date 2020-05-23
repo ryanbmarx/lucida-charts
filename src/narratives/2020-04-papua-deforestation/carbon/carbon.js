@@ -1,92 +1,62 @@
 import mapboxgl from "mapbox-gl";
 import { format } from "d3-format";
-import { colors } from "../../../theme/lucida-colors";
+import { bounds } from "../../../geo/bounds";
 
 import { initFrame } from "@newswire/frames";
-// import * as topojson from "topojson-client";
-import { feature } from "topojson-client";
-import { json } from "d3-fetch";
-import centroid from "@turf/centroid";
-import { scalePow } from "d3-scale";
-import { extent } from "d3-array";
-
 document.addEventListener("DOMContentLoaded", function (e) {
   initFrame();
   initMap();
 });
 
 function initMap() {
-  // Our map bounds
-  const ne = { lng: "142.99491427343645", lat: "0.2402043575591506" };
-  const sw = { lat: "-9.418022518884769", lng: "132.19535372656105" };
-
   mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
   // Init map
   const map = new mapboxgl.Map({
     container: "map", // HTML container id
-    style: "mapbox://styles/ryanbmarx/ck9ipxq9g02g61inhsybrxccl", // style URL
-    center: [137.595134, -4.605292], // starting position as [lng, lat]
-    zoom: 6,
+    style: "mapbox://styles/ryanbmarx/ckahsk7jb08x71iph5exh0scu", // style URL
+    center: [135.31471, -3.905906], // starting position as [lng, lat]
+    zoom: 4,
   });
+
   map.on("load", function () {
     // set map to fit our markers
-    map.fitBounds([ne, sw]);
+    map.fitBounds([bounds.papua.ne, bounds.papua.sw]);
     // Add UI
     map.addControl(new mapboxgl.NavigationControl());
+    map.getCanvas().style.cursor = "pointer";
 
-    json("geo/indonesia.json")
-      .then(data => feature(data, data.objects.indonesia))
-      .then(data => {
-        let dataExtent = extent(data.features, d =>
-          parseInt(d.properties.carbon_carbon)
-        );
+    const layers = [
+      "0&nbsp;-&nbsp;250 tons CO2 per Ha",
+      "251 - 500",
+      "501 - 750",
+      "751 - 1000",
+      "1001+",
+    ];
 
-        let maxValue = dataExtent[1];
-        let maxCircleRadius = 150;
+    const colors = ["#eafeb8", "#feb24d", "#fc4f2c", "#e41b1e", "#bd0026"];
 
-        let scale = scalePow()
-          .exponent(0.5)
-          .domain([0, maxValue])
-          .range([0, maxCircleRadius]);
+    const legend = document.querySelector("#legend");
 
-        data.features.forEach(f => {
-          var centroyd = centroid(f);
+    for (let i = 0; i < layers.length; i++) {
+      const li = document.createElement("li");
 
-          const popup = makePopup(f);
-          // create a HTML element for each feature
-          const el = getMapPin(scale(f.properties.carbon_carbon));
-          const mapOptions = {
-            element: el,
-            offset: 0,
-            anchor: "center",
-          };
-          const marker = new mapboxgl.Marker(mapOptions)
-            .setLngLat(centroyd.geometry.coordinates)
-            .setPopup(popup)
-            .addTo(map);
-        });
-        buildLegend(scale);
-        return data;
-      })
-      .then(data => {
-        map.addSource("carbon", {
-          type: "geojson",
-          data: data,
-        });
-        map.addLayer({
-          id: "carbonCircles",
-          type: "line",
-          source: "carbon",
-          layout: {},
-          paint: {
-            "line-width": 1,
-            "line-color": colors.gold,
-            "line-opacity": 0.75,
-          },
-        });
-      });
+      const layer = layers[i];
+      const color = colors[i];
+
+      const dot = document.createElement("span");
+      dot.classList.add("legend__dot");
+      dot.setAttribute("style", `background-color:${color};`);
+      li.appendChild(dot);
+      li.innerHTML += layer;
+      legend.appendChild(li);
+    }
+    map.on("click", "indonesia-carbon-stock", function (e) {
+      const pop = makePopup(e);
+      pop.setLngLat(e.lngLat).addTo(map);
+    });
   });
-}
+
+  /*
 
 function makePopup(f) {
   const formatter = format(".1f");
@@ -98,50 +68,14 @@ function makePopup(f) {
     )} tons</strong> of carbon dioxide per hectare.</p>`
   );
 }
+*/
 
-function getMapPin(r, classes = []) {
-  const pin = document.createElement("div");
-  pin.classList.add("pin", "pin--circle");
-  if (classes.length) {
-    classes.forEach(c => pin.classList.add(c));
+  function makePopup(e) {
+    const features = map.queryRenderedFeatures(e.point);
+    const regency = features[0].properties.ADM2_EN;
+    const carbon_carbon = format(",.1f")(features[0].properties.carbon_carbon);
+    return new mapboxgl.Popup().setHTML(
+      `<strong>${regency}</strong> has <strong>${carbon_carbon} tons</strong> of carbon dioxide per hectare.`
+    );
   }
-  const pinBody = document.createElement("div");
-  pinBody.classList.add("pin__body");
-  pinBody.style.width = `${r}px`;
-  pinBody.style.height = `${r}px`;
-
-  pin.appendChild(pinBody);
-  return pin;
-}
-
-function buildLegend(scale) {
-  const legend = document.querySelector("#legend");
-  /**
-   *       <li>
-        <span class="legend__dot legend__dot--50"></span>
-        50 tons of carbon dioxide
-      </li>
-      <li>
-        <span class="legend__dot legend__dot--500"></span>
-        100 tons
-      </li>
-      <li>
-        <span class="legend__dot legend__dot--500"></span>
-        500 tons
-      </li>
-
-   */
-
-  const legendExamples = [50, 100, 500];
-  legendExamples.forEach((l, index) => {
-    const li = document.createElement("li");
-    const dot = document.createElement("span");
-    dot.classList.add("legend__dot", `legend__dot--${l}`);
-    dot.style.width = `${scale(l)}px`;
-    dot.style.height = `${scale(l)}px`;
-    li.appendChild(dot);
-    li.innerHTML += `${l} tons`;
-    if (index === 0) li.innerHTML += " of carbon dioxide";
-    legend.appendChild(li);
-  });
 }

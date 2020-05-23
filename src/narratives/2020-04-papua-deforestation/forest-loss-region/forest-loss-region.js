@@ -1,39 +1,30 @@
 import { initFrame } from "@newswire/frames";
 import { csvParse } from "d3-dsv";
-import { format } from "d3-format";
 import Highcharts from "highcharts";
 import { lucidaChartTheme } from "../../../theme/lucida-chart-theme";
 import { colors } from "../../../theme/lucida-colors";
 
-const pointFormatter = format(",");
+const tooltip = {
+  xDateFormat: "%Y",
+  valueSuffix: " hectares",
+};
 
 const options = {
   chart: {
     type: "line",
   },
-  plotOptions: {
-    line: {
-      states: { hover: { marker: { enabled: false } } },
-      marker: {
-        enabled: false,
-        symbol: "circle",
+  plotOptions: {},
+  tooltip: tooltip,
+  yAxis: {
+    labels: {
+      useHtml: true,
+      formatter: function (e) {
+        return `${Highcharts.numberFormat(this.value / 1000, 0, null, ",")}K`;
       },
     },
-  },
-
-  tooltip: {
-    // useHtml: true,
-    shared: true,
-    // formatter: function () {
-    //   const total = pointFormatter(this.y);
-    //   const d = Highcharts.dateFormat("%Y", this.x);
-    //   const units = "hectares";
-    //   const region = "P";
-    //   console.log(this);
-
-    //   let tooltip = `<p>${d}</p><br /><p><strong>${region}:</strong> ${total} ${units}</p>`;
-    //   return tooltip;
-    // },
+    title: {
+      text: "Metric tons",
+    },
   },
   xAxis: {
     type: "datetime",
@@ -41,24 +32,8 @@ const options = {
       text: "",
     },
   },
-  yAxis: {
-    title: {
-      text: "",
-    },
-  },
-  title: {
-    text: "",
-  },
-  credits: {
-    text: "",
-  },
 };
-function getData(data) {
-  delete data["Region"];
-  return Object.keys(data).map(k => {
-    return [new Date(k, 0, 1).getTime(), parseInt(data[k])];
-  });
-}
+
 document.addEventListener("DOMContentLoaded", function (e) {
   initFrame();
 
@@ -69,20 +44,23 @@ document.addEventListener("DOMContentLoaded", function (e) {
       return csvParse(text);
     })
     .then(data => {
-      options.series = data.map(d => {
+      options.series = data.map(r => {
+        const province = r.Region;
+        delete r.Region;
         return {
-          name: d.Region,
-          lineColor:
-            d.Region === "Papua" || d.Region === "Papua Barat"
-              ? "black"
+          color:
+            province.toLowerCase().indexOf("papua") > -1
+              ? colors.blackCharcoal
               : colors.greenExtraLight,
-          data: getData(d),
+          name: province,
+          data: Object.keys(r).map(key => [
+            new Date(key, 0, 1).getTime(),
+            parseInt(r[key]),
+          ]),
         };
       });
     })
     .then(() => {
-      console.log(options);
-
       Highcharts.setOptions(lucidaChartTheme);
       const myChart = Highcharts.chart("container", options);
     })

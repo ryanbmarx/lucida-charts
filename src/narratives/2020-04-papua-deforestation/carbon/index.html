@@ -4,13 +4,12 @@
     <meta charset="utf8" />
     <meta name="viewport" content="width=device-width" />
 
-    <title>Deforestation in Papua | Lucida</title>
+    <title>Carbon stock in Papua | Lucida</title>
 
     <script
       async
       src="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js"
     ></script>
-    <script async src="https://code.highcharts.com/highcharts.js"></script>
     <link
       href="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.css"
       rel="stylesheet"
@@ -48,36 +47,14 @@
         height: 100%;
       }
 
-      .pin.pin--circle {
-        --pin-width: auto;
-        --pin-height: auto;
-      }
-
-      .pin.pin--circle::after {
-        content: none;
-      }
-
-      .legend,
-      .pin {
-        --pin-color: var(--gold);
-      }
-      .legend__dot,
-      .pin--circle .pin__body {
+      .legend__dot {
         background-color: var(--pin-color);
         border-radius: 50%;
-        opacity: 0.5;
-      }
-
-      .pin--circle .pin__body::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 5px;
-        height: 5px;
-        background-color: black;
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
+        opacity: 0.9;
+        min-width: 30px;
+        min-height: 30px;
+        max-width: 30px;
+        max-height: 30px;
       }
 
       @media all and (min-width: 1024px) {
