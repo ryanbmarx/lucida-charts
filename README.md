@@ -59,7 +59,7 @@ The cover is made using a single, custom block and is pretty self explanatory. F
 </style>
 ```
 
-### The content
+#### The content
 
 Each slide is it's own custom gutenberg block. An indivudal graphic is added to the `slide visual body` section of the block using a custom HTML block with the following code:
 
@@ -73,7 +73,7 @@ Each slide is it's own custom gutenberg block. An indivudal graphic is added to 
 
 The `data-frame-src` is required, and should point to an actual html file (in most cases: index.html). The initialization script will target divs with these data attributes. In most cases, the graphic title will be entered into wordpress (and not be part of the iframed presentation). Even so, for a11y reasons, the `title` property of the div should be set to the chart title.
 
-### The footer
+#### The footer
 
 The footer also is a single, reusable block. For narratives visualizations to work, it also requires a reusable block: `Narrative graphics javascript for embeds`
 
