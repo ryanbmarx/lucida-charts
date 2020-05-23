@@ -17,8 +17,6 @@ import { palmOil } from "./rollup_configs/2020-04-palm-oil.config.js";
 const production = !process.env.ROLLUP_WATCH;
 const PROJECT_SLUG = path.basename(__dirname);
 
-console.log(process.argv);
-
 const deps = {
   Highcharts: "https://code.highcharts.com/highcharts.js",
   mapboxgl: "https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js",

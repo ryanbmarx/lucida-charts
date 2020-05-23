@@ -1,15 +1,6 @@
 .DS_Store
 node_modules
-public/narratives/
-public/bundle.*
-public/**/*.html
-public/**/*.js
-public/**/*.map
-public/**/*.css
-public/**/*.csv
-public/**/*.svg
-public/**/*.png
-public/**/*.jpg
+public/
 docs/
 .env
 public/css/
