@@ -19,6 +19,12 @@
   padding: 0;
 }
 
+.chart-text {
+  font: 14px/1.3em var(--fonts-sans-serif, sans-serif);
+  color: var(--chart-text);
+  margin: 16px 0;
+}
+
 %highlighted-text {
   padding: 0 0.25em;
 }

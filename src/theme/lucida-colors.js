@@ -14,5 +14,6 @@ export const colors = {
   blackPrimary: "#1d1e1b",
   textMain: "#606060",
   textLight: "#888888",
-  gold: "#fdb76a",
+  // gold: "#fdb76a",
+  gold: "#CE9F2E",
 };

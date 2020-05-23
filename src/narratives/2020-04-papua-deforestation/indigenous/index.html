@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>The indigenous people of Papua | Lucida</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../../css/global.css" />
+    <link rel="stylesheet" href="../../../css/numbers.css" />
+    <style>
+      .numbers {
+        background: black
+          url(https://lucidamktstg.wpengine.com/wp-content/uploads/2020/05/AdobeStock_174018255-scaled.jpeg)
+          center no-repeat;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="numbers">
+      <div class="numbers__content" data-col="2" data-row="2">
+        <div class="number">
+          <p class="number__label">Population</p>
+          <span class="number__number">50</span>
+          <p class="number__description">
+            Approximate percentage of Indonesia's 3.5 million people who are
+            indigenous.
+          </p>
+        </div>
+        <div class="number">
+          <p class="number__label">Diversity</p>
+          <span class="number__number">312</span>
+          <p class="number__description">
+            Approximate number of tribes in Papua, some that have not been
+            contacted.
+          </p>
+        </div>
+
+        <div class="number">
+          <p class="number__label">Culture</p>
+          <span class="number__number">271</span>
+          <p class="number__description">
+            Approximate number of languages spoken in the region.
+          </p>
+        </div>
+
+        <div class="number">
+          <p class="number__label">History</p>
+          <span class="number__number">1963</span>
+          <p class="number__description">
+            The year the Netherlands ceded Papuan territory to Indonesia, a
+            controversial change that has lead to clashes with the Indonesian
+            military.
+          </p>
+        </div>
+      </div>
+    </div>
+    <script type="module">
+      import { initFrame } from "https://unpkg.com/@newswire/frames/dist/index.mjs";
+
+      window.addEventListener("DOMContentLoaded", function (e) {
+        initFrame();
+      });
+    </script>
+  </body>
+</html>

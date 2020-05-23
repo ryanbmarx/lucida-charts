@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap");
+
+body {
+  background-color: #f5f4f1;
+  font-family: "Lato", Helvetica, sans-serif;
+}
+
+text {
+  margin-top: 0;
+  font-size: 0.9em;
+  color: #625f5d;
+  line-height: 1.5;
+}
+
+#alicorp_viz {
+  max-width: 800px;
+  display: block;
+  margin: 0 auto;
+}
+
+.domain {
+  display: none;
+}
+
+g.tick line {
+  stroke: #000;
+}
+g.tick text {
+  font-size: 1.5em;
+  fill: #625f5d;
+  line-height: 1.5;
+}
+text {
+  font-size: 0.9em;
+  fill: #625f5d;
+  line-height: 1.5;
+}
+.date text {
+  font-size: 12px;
+}
+circle {
+  fill: #333;
+  stroke: #333;
+  stroke-width: 1px;
+}
+
+.line {
+  fill: none;
+  stroke: #6f257f;
+  stroke-width: 5px;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus circle {
+  fill: #efefef;
+  stroke: #333;
+  stroke-width: 2px;
+}
+
+.hover-line {
+  stroke: #6f257f;
+  stroke-width: 2px;
+  stroke-dasharray: 3, 3;
+}

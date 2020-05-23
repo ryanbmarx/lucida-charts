@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Carbon stock in Papua | Lucida</title>
+
+    <script
+      async
+      src="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js"
+    ></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../../css/global.css" />
+    <style>
+      .container {
+        --map-z-index: 1;
+        background: #eee;
+        display: flex;
+        flex-flow: column nowrap;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        min-height: 400px;
+      }
+
+      .map {
+        flex: 2 2;
+        background: black;
+        display: flex;
+        z-index: var(--map-z-index, 1);
+      }
+
+      .chart {
+        box-sizing: border-box;
+        padding: 16px;
+        margin: 0;
+        flex: 1 1;
+      }
+
+      .chart__container {
+        height: 100%;
+      }
+
+      .legend__dot {
+        background-color: var(--pin-color);
+        border-radius: 50%;
+        opacity: 0.9;
+        min-width: 30px;
+        min-height: 30px;
+        max-width: 30px;
+        max-height: 30px;
+      }
+
+      @media all and (min-width: 1024px) {
+        #legend {
+          position: absolute;
+          padding: 16px;
+          background: rgba(255, 255, 255, 0.9);
+          z-index: 2;
+          top: 0;
+          left: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul id="legend" class="legend"></ul>
+    <div class="container" id="map"></div>
+    <script src="carbon.min.js"></script>
+  </body>
+</html>

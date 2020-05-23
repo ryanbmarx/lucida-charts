@@ -17,13 +17,13 @@ export function sidebar(data, maxValue, formatter) {
 
   if (!formatter) formatter = format;
 
-  data.forEach((d) => {
+  data.forEach(d => {
     const row = document.createElement("li");
     row.classList.add("sidebar__row");
     if (d.highlight) row.classList.add("sidebar__row--highlight");
     const width = Math.round((d.value / max) * 100);
     let labelClass = width <= 50 ? "sidebar__bar--label-outside" : "";
-    row.innerHTML = `<p class="sidebar__label"><a class="profile-link" href="#">${d.label}</a></p>
+    row.innerHTML = `<p class="sidebar__label">${d.label}</p>
     <div class="sidebar__bar ${labelClass}">
       <div style="width:${width}%;" class="sidebar__bar-inner">
         <span>${formatter(d.value)}</span>
