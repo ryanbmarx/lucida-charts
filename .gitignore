@@ -1,5 +1,6 @@
 .DS_Store
 node_modules
+public/narratives/
 public/bundle.*
 public/**/*.html
 public/**/*.js
