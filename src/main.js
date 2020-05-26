@@ -1,7 +1,8 @@
-import Narrative from "./Narrative.svelte";
+// import Narrative from "./Narrative.svelte";
+import Index from "./components/Index.svelte";
 import pages from "./structure.json";
 
-const narrative = new Narrative({
+const app = new Index({
   hydrate: true,
   target: document.body,
   props: {
@@ -9,4 +10,4 @@ const narrative = new Narrative({
   },
 });
 
-export default index;
+export default app;

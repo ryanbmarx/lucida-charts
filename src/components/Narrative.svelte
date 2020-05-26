@@ -1,9 +1,12 @@
 <script>
   import { onMount } from "svelte";
-  import { initFrame } from "@newswire/frames";
+  import { autoInitFrames } from "@newswire/frames";
+
+  export let embed;
+  export let format = "stacked";
 
   onMount(() => {
-    initFrame();
+    autoInitFrames();
   });
 </script>
 
@@ -31,33 +34,72 @@
     background-color: #e2e0d7;
     padding: 110px 2vw 2vw 2vw;
     box-sizing: border-box;
-    height: 100vh;
     width: 100vw;
   }
 
-  article {
-    display: flex;
-    align-items: stretch;
-    height: 100%;
-  }
-
   aside {
+    box-sizing: border-box;
     background: white;
     padding: 24px;
-    width: 40vw;
-    height: 100%;
+  }
+
+  h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family: Lato, sans-serif;
   }
 
   h4 {
     font-size: 2em;
     margin: 0 0 24px 0;
   }
+
   section {
-    margin-right: 32px;
+    padding: 0 32px 32px 32px;
+    margin-bottom: 32px;
     flex: 1;
-    background: yellow;
+    background: rgb(245, 244, 241);
+
+    display: flex;
+    flex-flow: column nowrap;
   }
+
+  .section__middle {
+    flex: 1 1;
+  }
+
+  .body--full section {
+    padding: 0;
+  }
+
+  [data-frame-src] {
+    min-height: 410px;
+  }
+
   @media screen and (min-width: 992px) {
+    main.body {
+      height: 100vh;
+    }
+    article {
+      display: flex;
+      align-items: stretch;
+      height: 100%;
+    }
+    section {
+      margin: 0 32px 0 0;
+    }
+
+    aside {
+      width: 40vw;
+      height: 100%;
+      overflow: scroll;
+    }
+    [data-frame-src]:not(.no-flex),
+    [data-frame-src]:not(.no-flex) :global(iframe) {
+      min-height: 100%;
+      height: 100%;
+      display: block;
+    }
   }
 </style>
 
@@ -67,9 +109,28 @@
     rel="stylesheet" />
 </svelte:head>
 
-<main class="body">
+<main
+  class="body"
+  class:body--full={format === 'full'}
+  class:body--stacked={format === 'stacked'}>
   <article>
-    <section>dsjlfjdklflds</section>
+    <section>
+      {#if format === 'stacked'}
+        <div class="section__upper">
+          <h3>This is the chart headline</h3>
+          <p>
+            This is some optional chatter. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit.
+          </p>
+        </div>
+      {/if}
+      <div class="section__middle">
+        <div
+          data-frame-src={embed}
+          data-frame-title="About the indigenous people of Papua"
+          data-frame-sandbox="allow-scripts allow-same-origin" />
+      </div>
+    </section>
     <aside class="slide__page__right slide__page__content">
       <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit</h4>
       <p>
