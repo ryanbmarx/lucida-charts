@@ -13,6 +13,7 @@ import { china } from "./rollup_configs/2020-05-china.config";
 import { alicorp } from "./rollup_configs/2020-05-alicorp.config.js";
 import { papua } from "./rollup_configs/2020-04-papua-deforestation.config.js";
 import { palmOil } from "./rollup_configs/2020-04-palm-oil.config.js";
+import { fireMaps } from "./rollup_configs/fire-maps.js";
 
 const production = !process.env.ROLLUP_WATCH;
 const PROJECT_SLUG = path.basename(__dirname);
@@ -23,6 +24,7 @@ const deps = {
 };
 
 export default [
+  ...fireMaps,
   ...alicorp,
   ...china,
   ...papua,
