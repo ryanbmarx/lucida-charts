@@ -2,12 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>CodePen - Peru Fire Map</title>
+    <title>Peru Fire Map | Lucida</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link href="../../css/global.css" rel="stylesheet" />
+    <link href="../../css/fire-map.css" rel="stylesheet" />
   </head>
   <body>
     <!-- partial:index.partial.html -->
@@ -25,26 +26,22 @@
     </head>
 
     <body>
-      <div id="lucida-peru-map">
-        <div class="map-container">
-          <div id="map">
-            <div class="slider-container">
-              <span>Fires in Peru as of</span>
-              <label id="date"></label>
-              <input
-                id="slider"
-                type="range"
-                min="1585717200000"
-                max="1588222800000"
-                step="86400000"
-                value="1588222800000"
-              />
-            </div>
-          </div>
+      <div id="map">
+        <div class="slider-container">
+          <span>Fires in Peru as of</span>
+          <label id="date"></label>
+          <input
+            id="slider"
+            type="range"
+            min="1585717200000"
+            max="1588222800000"
+            step="86400000"
+            value="1588222800000"
+          />
         </div>
       </div>
     </body>
     <!-- partial -->
-    <script src="script.js"></script>
+    <script src="script.min.js"></script>
   </body>
 </html>
