@@ -7,6 +7,7 @@ export function generateListIndex(pages) {
 function createListOfChildren(arr, dirDelete = "public/", idx = 2) {
   if (!arr.children) return;
   const ul = document.createElement("ul");
+  ul.classList.add(`level-${idx - 1}`);
   for (let child of arr.children) {
     if (idx > 2 || child.type === "directory") {
       const li = document.createElement("li");
