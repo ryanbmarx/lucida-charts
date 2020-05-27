@@ -15,11 +15,6 @@
 </script>
 
 <style>
-  :global(html body) {
-    padding: 0;
-    margin: 0;
-  }
-
   h1,
   h2,
   h3,
@@ -36,6 +31,7 @@
 
   main.body {
     background-color: #e2e0d7;
+    background-color: var(--background-color);
     padding: 110px 2vw 2vw 2vw;
     box-sizing: border-box;
     width: 100vw;

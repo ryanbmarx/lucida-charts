@@ -30,6 +30,7 @@
     height: 1.5em;
     width: 1.5em;
     background: red;
+    border: 2px solid var(--background-color, transparent);
 
     border-radius: 50%;
     position: absolute;
@@ -37,7 +38,6 @@
     left: 0;
     transform: translate(0, -50%);
     z-index: 3;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 
     transition: all 150ms ease;
 
@@ -57,7 +57,7 @@
     position: absolute;
     top: 50%;
     left: 0;
-    transform: translate(0, -50%);
+    transform: translate(0, -50%) rotate(0deg);
     transition: all 150ms ease;
   }
 
@@ -65,10 +65,9 @@
     content: "\00D7";
   }
   #format:checked + .toggle-wrapper .toggle__inner {
-    right: 0;
-    left: auto;
+    left: 100%;
+    transform: translate(-100%, -50%) rotate(360deg);
     background: lightgreen;
-
     transition: all 150ms ease;
   }
 

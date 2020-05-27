@@ -34,6 +34,12 @@
 </script>
 
 <style>
+  :global(html body) {
+    --background-color: #e2e0d7;
+    padding: 0;
+    margin: 0;
+    background: var(--background-color);
+  }
   .btn {
     display: block;
     background: rgba(0, 0, 0, 0.15);
