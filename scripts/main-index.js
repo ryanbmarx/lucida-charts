@@ -1,5 +1,7 @@
 const dirTree = require("directory-tree");
 const fs = require("fs");
+const PATH = require("path");
+const sander = require("sander");
 
 const excludes = [/css/, /geo/, /icons/, /static/];
 

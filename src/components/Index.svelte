@@ -1,13 +1,15 @@
 <script>
   import { onMount } from "svelte";
   import Narrative from "./Narrative.svelte";
+  import FormatToggle from "./FormatToggle.svelte";
   import { generateListIndex } from "../utils/generate-list-index.js";
   export let pages;
 
   let pageTitle = "Lucida graphics";
   let narrativeVisible = false;
   let embed;
-  let format = "stacked";
+  let fullContent = false;
+  $: format = fullContent ? "full" : "stacked";
   let list = "<p>Nothing</p>";
 
   onMount(() => {
@@ -24,6 +26,11 @@
     pageTitle = "Lucida graphics";
     window.location.href = window.location.origin;
   }
+
+  function toggleFormat(e) {
+    fullContent = !fullContent;
+    console.log("toggle", fullContent);
+  }
 </script>
 
 <style>
@@ -37,16 +44,22 @@
     justify-content: center;
     border: none;
     font-size: 14px;
-    margin: 1em;
     padding: 0.5em 1em;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     cursor: pointer;
     width: 2em;
     height: 2em;
-
+  }
+  .controls {
     position: fixed;
     top: 0;
     right: 0;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 </style>
 
@@ -55,7 +68,10 @@
 </svelte:head>
 {#if embed}
   <Narrative {embed} {format} {pageTitle} />
-  <button class="btn" on:click={toggle}>&times;</button>
+  <div class="controls">
+    <FormatToggle on:input={toggleFormat} />
+    <button class="btn" on:click={toggle}>&times;</button>
+  </div>
 {:else}
   <div class="drawer">
     <h1>Lucida Graphics & Narratives</h1>
