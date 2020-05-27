@@ -40,6 +40,10 @@
     margin: 0;
     background: var(--background-color);
   }
+
+  .drawer {
+    padding: 30px;
+  }
   .btn {
     display: block;
     background: rgba(0, 0, 0, 0.15);
