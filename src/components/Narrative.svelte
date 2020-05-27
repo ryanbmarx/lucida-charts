@@ -1,12 +1,16 @@
 <script>
   import { onMount } from "svelte";
   import { autoInitFrames } from "@newswire/frames";
+  // import { pageTitle } from "./Index.svelte";
 
   export let embed;
+  export let pageTitle;
   export let format = "stacked";
 
   onMount(() => {
     autoInitFrames();
+    // const u = new URL(embed);
+    // console.log(u);
   });
 </script>
 
@@ -127,12 +131,14 @@
       <div class="section__middle">
         <div
           data-frame-src={embed}
-          data-frame-title="About the indigenous people of Papua"
+          data-frame-title="This is the iframe title"
           data-frame-sandbox="allow-scripts allow-same-origin" />
       </div>
     </section>
     <aside class="slide__page__right slide__page__content">
-      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit</h4>
+      <h4>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit: {pageTitle}
+      </h4>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
         delectus aperiam odio mollitia vero nemo quidem non illo minus, facilis
