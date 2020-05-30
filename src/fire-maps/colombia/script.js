@@ -25,8 +25,6 @@ function initMap() {
     fetch("./columbia-fires.json")
       .then(resp => resp.json())
       .then(fireData => {
-        console.log(fireData);
-
         map.addSource("colombia", {
           type: "geojson",
           data: fireData,

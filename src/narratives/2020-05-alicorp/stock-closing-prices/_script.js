@@ -2336,7 +2336,6 @@ const data = [
 ];
 
 window.addEventListener("DOMContentLoaded", function (e) {
-  console.log("Dom Content Loaded");
   initFrame();
 
   const svg = d3.select(".container svg"),

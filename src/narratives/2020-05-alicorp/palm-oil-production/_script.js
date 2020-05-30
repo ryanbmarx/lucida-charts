@@ -182,7 +182,6 @@ const y = d3.scaleLinear().domain([0, 230]).range([0, height]);
 const x = d3.scaleLinear().domain([1979, 2020]).range([0, width]);
 
 window.addEventListener("DOMContentLoaded", function (e) {
-  console.log("Dom Content Loaded");
   initFrame();
 
   const svg = d3
@@ -191,15 +190,6 @@ window.addEventListener("DOMContentLoaded", function (e) {
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g");
-
-  // var tool_tip = d3
-  //   .tip()
-  //   .attr("class", "d3-tip")
-  //   .offset([-8, 0])
-  //   .html(function (d) {
-  //     return `Year: ${d.Year} <br/> Production: ${d.Production}t`;
-  //   });
-  // svg.call(tool_tip);
 
   const barWidth = (width / palmOilData.length) * 0.95;
 

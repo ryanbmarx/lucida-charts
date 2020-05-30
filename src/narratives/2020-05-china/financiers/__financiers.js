@@ -25,9 +25,6 @@ const f = v => {
 
 document.addEventListener("DOMContentLoaded", function (e) {
   initFrame();
-  console.log("harpo");
-  // Highcharts.setOptions(lucidaChartTheme);
-  // const myChart = Highcharts.chart("china-financiers", options);
 
   data.sort((a, b) => b.value - a.value);
   document

@@ -76,7 +76,6 @@ const options = {
 };
 document.addEventListener("DOMContentLoaded", function (e) {
   initFrame();
-  console.log("harpo");
   Highcharts.setOptions(lucidaChartTheme);
   const myChart = Highcharts.chart("china-financiers", options);
 });

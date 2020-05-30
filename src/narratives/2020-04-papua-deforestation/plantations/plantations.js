@@ -8,7 +8,6 @@ import { format } from "d3-format";
 const pointFormatter = format(",.2f");
 
 document.addEventListener("DOMContentLoaded", function (e) {
-  console.log("Map DOMContent is loaded");
   initFrame();
 
   // THESE ARE CHART-SPECIFIC ITEMS
@@ -36,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
         )}</td></tr>`;
         for (let i = 0; i < this.points.length; i++) {
           const p = this.points[i];
-          console.log(p.y, total);
           tooltip += `<tr>
           <td><span style="background-color:${
             p.series.color

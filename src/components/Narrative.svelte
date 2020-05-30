@@ -9,8 +9,6 @@
 
   onMount(() => {
     autoInitFrames();
-    // const u = new URL(embed);
-    // console.log(u);
   });
 </script>
 

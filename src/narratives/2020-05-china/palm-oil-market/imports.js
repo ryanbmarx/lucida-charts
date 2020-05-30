@@ -122,7 +122,6 @@ const catOptions = {
 
 function initCategoryChart() {
   Highcharts.setOptions(lucidaChartTheme);
-  console.log(catOptions);
   const myChart = Highcharts.chart("china-categories", catOptions);
 }
 

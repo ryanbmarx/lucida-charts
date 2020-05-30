@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
       });
     })
     .then(() => {
-      console.log(options);
       Highcharts.setOptions(lucidaChartTheme);
       Highcharts.chart("container", options);
     })
