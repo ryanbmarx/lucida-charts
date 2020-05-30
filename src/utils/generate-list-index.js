@@ -38,6 +38,7 @@ function getIframe(graphic) {
   iframePath.searchParams.set("pageTitle", graphic.name);
 
   const iframe = document.createElement("a");
+  iframe.classList.add("iframe");
   iframe.setAttribute("target", "_blank");
   iframe.setAttribute("rel", "noopener noreferrer");
   iframe.setAttribute("href", iframePath);

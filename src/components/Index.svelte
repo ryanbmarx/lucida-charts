@@ -1,10 +1,11 @@
 <script>
-  import { onMount } from "svelte";
+  import { onMount, afterUpdate } from "svelte";
   import Narrative from "./Narrative.svelte";
   import FormatToggle from "./FormatToggle.svelte";
   import { generateListIndex } from "../utils/generate-list-index.js";
   export let pages;
 
+  let drawer;
   let pageTitle = "Lucida graphics";
   let narrativeVisible = false;
   let embed;
@@ -12,13 +13,18 @@
   $: format = fullContent ? "full" : "stacked";
   let list = "<p>Nothing</p>";
 
-  onMount(() => {
-    list = generateListIndex(pages);
+  onMount(async () => {
+    list = await generateListIndex(pages);
     const u = new URL(window.location.href);
     embed = u.searchParams.get("embed");
     if (u.searchParams.get("format")) format = u.searchParams.get("format");
     if (u.searchParams.get("pageTitle"))
       pageTitle = u.searchParams.get("pageTitle");
+  });
+
+  afterUpdate(() => {
+    // const iframeLinks = drawer.querySelectorAll(".iframe");
+    //console.log(iframeLinks);
   });
 
   function toggle(e) {
@@ -29,8 +35,9 @@
 
   function toggleFormat(e) {
     fullContent = !fullContent;
-    console.log("toggle", fullContent);
   }
+
+  function initIframe(node) {}
 </script>
 
 <style>
@@ -43,6 +50,8 @@
 
   .drawer {
     padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
   }
   .btn {
     display: block;
@@ -83,7 +92,7 @@
     <button class="btn" on:click={toggle}>&times;</button>
   </div>
 {:else}
-  <div class="drawer">
+  <div class="drawer" bind:this={drawer}>
     <h1>Lucida Graphics & Narratives</h1>
     {@html list}
   </div>
