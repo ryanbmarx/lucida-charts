@@ -1,5 +1,5 @@
 <script>
-  import { onMount, afterUpdate } from "svelte";
+  import { onMount } from "svelte";
   import Narrative from "./Narrative.svelte";
   import FormatToggle from "./FormatToggle.svelte";
   import { generateListIndex } from "../utils/generate-list-index.js";
@@ -14,18 +14,29 @@
   let list = "<p>Nothing</p>";
 
   onMount(async () => {
-    list = await generateListIndex(pages);
+    generateListIndex(pages)
+      .then(r => (list = r))
+      .then(r => {
+        for (let link of drawer.querySelectorAll(".iframe")) {
+          link.addEventListener("click", handleIframeClick);
+        }
+      });
     const u = new URL(window.location.href);
     embed = u.searchParams.get("embed");
     if (u.searchParams.get("format")) format = u.searchParams.get("format");
     if (u.searchParams.get("pageTitle"))
       pageTitle = u.searchParams.get("pageTitle");
   });
-
-  afterUpdate(() => {
-    // const iframeLinks = drawer.querySelectorAll(".iframe");
-    //console.log(iframeLinks);
-  });
+  function handleIframeClick(e) {
+    e.preventDefault();
+    const u = new URL(this.href);
+    if (u.searchParams.get("embed")) {
+      embed = u.searchParams.get("embed");
+    }
+    if (u.searchParams.get("format")) {
+      format = u.searchParams.get("format");
+    }
+  }
 
   function toggle(e) {
     embed = null;

@@ -1,7 +1,8 @@
 export function generateListIndex(pages) {
-  console.log(pages);
-  let retval = createListOfChildren(pages);
-  return retval;
+  return new Promise((resolve, reject) => {
+    let retval = createListOfChildren(pages);
+    resolve(retval);
+  });
 }
 
 function createListOfChildren(arr, dirDelete = "public/", idx = 2) {

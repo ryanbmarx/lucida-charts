@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { autoInitFrames } from "@newswire/frames";
-  // import { pageTitle } from "./Index.svelte";
+  import { fade, fly, blur } from "svelte/transition";
 
   export let embed;
   export let pageTitle;
@@ -114,6 +114,7 @@
 </svelte:head>
 
 <main
+  transition:fly={{ y: -50, duration: 400 }}
   class="body"
   class:body--full={format === 'full'}
   class:body--stacked={format === 'stacked'}>
