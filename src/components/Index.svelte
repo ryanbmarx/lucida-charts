@@ -91,6 +91,12 @@
     align-items: center;
     justify-content: space-between;
   }
+
+  h1 {
+    font-family: "MacklinDisplay";
+    font-size: 3rem;
+    font-weight: 400;
+  }
 </style>
 
 <svelte:head>

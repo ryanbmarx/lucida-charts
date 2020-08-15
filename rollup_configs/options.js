@@ -51,6 +51,7 @@ export const options = {
       ),
       "process.env.PROJECT_SLUG": JSON.stringify(PROJECT_SLUG),
       "process.env.MAPBOX_TOKEN": JSON.stringify(process.env.MAPBOX_TOKEN),
+      "process.env.MAPBOX_TOKEN_R": JSON.stringify(process.env.MAPBOX_TOKEN_R),
     }),
 
     // If we're building for production (npm run build

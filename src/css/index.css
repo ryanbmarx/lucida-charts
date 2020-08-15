@@ -1,3 +1,52 @@
+@font-face {
+  font-family: "MacklinDisplay";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../fonts/Monotype - Macklin Display ExtraLight.otf")
+    format("opentype");
+  unicode-range: U+000-5FF; /* Latin glyphs */
+}
+
+@font-face {
+  font-family: "MacklinDisplay";
+  font-style: normal;
+  font-weight: 200;
+  src: url("../fonts/Monotype - Macklin Display Light.otf") format("opentype");
+  unicode-range: U+000-5FF; /* Latin glyphs */
+}
+
+@font-face {
+  font-family: "MacklinDisplay";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Monotype - Macklin Display Medium.otf") format("opentype");
+  unicode-range: U+000-5FF; /* Latin glyphs */
+}
+
+@font-face {
+  font-family: "MacklinDisplay";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Monotype - Macklin Display Bold.otf") format("opentype");
+  unicode-range: U+000-5FF; /* Latin glyphs */
+}
+
+@font-face {
+  font-family: "MacklinSans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Monotype - Macklin Sans Bold.otf") format("opentype");
+  unicode-range: U+000-5FF; /* Latin glyphs */
+}
+
+@font-face {
+  font-family: "MacklinSans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Monotype - Macklin Sans Light.otf") format("opentype");
+  unicode-range: U+000-5FF; /* Latin glyphs */
+}
+
 .drawer ul {
   list-style: none;
   margin: 0;
@@ -29,8 +78,8 @@
   h4,
   h5,
   h6 {
-    font-weight: bold;
-    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-family: "MacklinDisplay", monospace;
     line-height: 1em;
     margin-bottom: 1em;
   }
@@ -47,7 +96,6 @@
 
 .drawer h2 {
   text-transform: uppercase;
-  font-size: 20px;
   margin: 60px 0 0 0;
   color: #888;
   font-weight: lighter;

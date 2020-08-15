@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 });
 
 function initMap() {
-  mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
+  mapboxgl.accessToken = process.env.MAPBOX_TOKEN_R;
   // Init map
   const map = new mapboxgl.Map({
     container: "map", // HTML container id

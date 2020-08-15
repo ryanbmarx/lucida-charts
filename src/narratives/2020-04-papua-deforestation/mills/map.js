@@ -39,30 +39,6 @@ export function initMap() {
         "line-opacity": 0.75,
       },
     });
-
-    // Add our mills
-    mills.data.Mill.forEach(mill => {
-      // create a HTML element for each feature
-      const rspoClass =
-        mill.cert === "RSPO Certified" ? "pin--rspo" : "pin--non-rspo";
-      const pin = getMapPin([rspoClass]);
-
-      // Our mill coordinattes
-      const coordinates = [mill.longitude, mill.latitude];
-
-      // Make a popup for the mill
-      const popup = makePopup(mill);
-
-      const mapOptions = {
-        element: pin,
-        offset: 0,
-        anchor: "bottom",
-      };
-      const marker = new mapboxgl.Marker(mapOptions)
-        .setPopup(popup)
-        .setLngLat(coordinates)
-        .addTo(map);
-    });
   });
 }
 
