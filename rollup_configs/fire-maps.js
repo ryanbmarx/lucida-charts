@@ -22,6 +22,16 @@ export const fireMaps = [
     ...options,
   },
   {
+    input: "src/fire-maps/brazil/script.js",
+    output: {
+      sourcemap: true,
+      format: "iife",
+      name: "base",
+      file: "public/fire-maps/brazil/script.min.js",
+    },
+    ...options,
+  },
+  {
     input: "src/fire-maps/indonesia/script.js",
     output: {
       sourcemap: true,

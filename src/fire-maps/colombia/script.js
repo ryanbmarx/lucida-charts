@@ -1,69 +1,40 @@
 import { initFrame } from "@newswire/frames";
 import countries from "../../geo/colombia-boundary.json";
 import { colors } from "../../theme/lucida-colors";
+import { csvParse } from "d3";
+import { apdate } from "journalize";
 
 document.addEventListener("DOMContentLoaded", function (e) {
   initFrame();
   initMap();
 });
-
 function initMap() {
-  mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
+  mapboxgl.accessToken = process.env.MAPBOX_TOKEN_R;
 
+  // CONFIG STUFF
+  const SLUG = "colombia";
+  const LOCATION = "Colombia";
+  const CENTER = [-73.0973, 4.5709];
+
+  // UI ELEMENTS
+  const SLIDER = document.getElementById("slider");
+  const END_DATE = document.getElementById("date");
+
+  // INIT THE MAP
   var map = new mapboxgl.Map({
     container: "map",
     style: "mapbox://styles/mapbox/satellite-v9",
-    center: [-73.0973, 4.5709],
-    zoom: 5,
+    zoom: 3.7,
+    center: CENTER,
   });
+  map.scrollZoom.disable();
+  map.addControl(new mapboxgl.NavigationControl());
 
   map.on("load", function () {
     map.addSource("countries", {
       type: "geojson",
       data: countries,
     });
-    fetch("./columbia-fires.json")
-      .then(resp => resp.json())
-      .then(fireData => {
-        map.addSource("colombia", {
-          type: "geojson",
-          data: fireData,
-        });
-
-        map.addLayer({
-          id: "fires",
-          type: "circle",
-          source: "colombia",
-          paint: {
-            "circle-color": colors.gold,
-            "circle-radius": 4,
-            "circle-opacity": {
-              property: "BRIGHTNESS",
-              stops: [
-                [280, 0],
-                [380, 1],
-              ],
-            },
-          },
-        });
-
-        map.on("mousemove", "fires", function (e) {
-          map.getCanvas().style.cursor = "pointer";
-          popup
-            .setLngLat(e.features[0].geometry.coordinates)
-            .setHTML(
-              `April ${e.features[0].properties["ACQ_DATE"].slice(8, 10)}`
-            )
-            .addTo(map);
-        });
-        map.on("mouseleave", "fires", function () {
-          map.getCanvas().style.cursor = "";
-          popup.remove();
-        });
-
-        filterBy("2020-04-30T00:00:00.000Z");
-      })
-      .catch(e => console.error(e));
 
     map.addLayer({
       id: "border-dropshadow",
@@ -89,23 +60,93 @@ function initMap() {
       },
     });
 
-    var wrld_filters = ["==", "CNTRY_NAME", "Colombia"];
+    // GET THE FIRES
+    fetch(`./${SLUG}.csv`)
+      .then(r => {
+        return r.ok ? r.text() : Promise.reject(r.status);
+      })
+      .then(d => {
+        return csvParse(d, function (f) {
+          return { lat: f.latitude, lng: f.longitude, date: new Date(f.acq_date) };
+        });
+      })
+      .then(data => {
+        // generate a GEOJSON blob with the data, by adding it to
+        // a feature collection. Sort the coordinates by date
+        return {
+          type: "FeatureCollection",
+          features: data
+            .sort((a, b) => {
+              return a.date - b.date;
+            })
+            .map(d => {
+              return {
+                type: "Feature",
+                geometry: { type: "Point", coordinates: [d.lng, d.lat] },
+                properties: {
+                  ACQ_DATE: new Date(d.date).getTime(),
+                },
+              };
+            }),
+        };
+      })
+      .then(geoJSON => {
+        map.addSource(SLUG, {
+          type: "geojson",
+          data: geoJSON,
+        });
+
+        map.addLayer({
+          id: "fires",
+          type: "circle",
+          source: SLUG,
+          paint: {
+            "circle-color": colors.gold,
+            "circle-radius": 4,
+            "circle-opacity": 0.8,
+          },
+        });
+
+        map.on("mousemove", "fires", function (e) {
+          map.getCanvas().style.cursor = "pointer";
+          popup
+            .setLngLat(e.features[0].geometry.coordinates)
+            .setHTML(`${apdate(new Date(e.features[0].properties["ACQ_DATE"]))}`)
+            .addTo(map);
+        });
+        map.on("mouseleave", "fires", function () {
+          map.getCanvas().style.cursor = "";
+          popup.remove();
+        });
+
+        // INIT THE UI
+        const FIRST_FIRE_DATE = new Date(geoJSON.features[0].properties.ACQ_DATE);
+        const LAST_FIRE_DATE = new Date(geoJSON.features[geoJSON.features.length - 1].properties.ACQ_DATE);
+
+        document.getElementById("start-date").textContent = `Fires in ${LOCATION} from ${apdate(FIRST_FIRE_DATE)}, to`;
+
+        SLIDER.setAttribute("min", FIRST_FIRE_DATE.getTime());
+        SLIDER.setAttribute("max", LAST_FIRE_DATE.getTime());
+        SLIDER.value = LAST_FIRE_DATE.getTime();
+
+        filterBy(LAST_FIRE_DATE);
+      })
+      .catch(e => console.error(e));
+
+    var wrld_filters = ["==", "CNTRY_NAME", LOCATION];
     map.setFilter("border", wrld_filters);
     map.setFilter("border-dropshadow", wrld_filters);
 
     function filterBy(date) {
-      var filters = ["<=", "ACQ_DATE", date];
-      map.setFilter("fires", filters);
+      var filters = ["<=", "ACQ_DATE", date.getTime()];
+      map.setFilter("fires", filters, {});
+      END_DATE.textContent = `${apdate(date)}:`;
     }
 
-    document.getElementById("date").textContent = "April 30, 2020";
-    document.getElementById("slider").addEventListener("input", function (e) {
+    SLIDER.addEventListener("input", function (e) {
       let adate = +e.target.value;
-      let day = new Date(adate).getDate();
-      let stringDay = ("0" + day).slice(-2);
-      const testDate = `2020-04-${stringDay}T00:00:00.000Z`;
-      document.getElementById("date").textContent = `April ${day}, 2020`;
-      filterBy(testDate);
+      let d = new Date(adate);
+      filterBy(d);
     });
 
     var popup = new mapboxgl.Popup({
@@ -113,7 +154,4 @@ function initMap() {
       closeOnClick: false,
     });
   });
-
-  map.scrollZoom.disable();
-  map.addControl(new mapboxgl.NavigationControl());
 }

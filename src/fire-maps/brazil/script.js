@@ -8,13 +8,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
   initFrame();
   initMap();
 });
+
 function initMap() {
   mapboxgl.accessToken = process.env.MAPBOX_TOKEN_R;
 
   // CONFIG STUFF
   const SLUG = "brazil";
   const LOCATION = "Brazil";
-  const CENTER = [-73.0973, 4.5709];
+  const CENTER = [-60.604612, -7.749046];
+  const MAP_ZOOM = 3;
 
   // UI ELEMENTS
   const SLIDER = document.getElementById("slider");
@@ -24,7 +26,7 @@ function initMap() {
   var map = new mapboxgl.Map({
     container: "map",
     style: "mapbox://styles/mapbox/satellite-v9",
-    zoom: 3.7,
+    zoom: MAP_ZOOM,
     center: CENTER,
   });
   map.scrollZoom.disable();
