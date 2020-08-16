@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Brazil Fire Map | Lucida</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js"></script>
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+    <link href="../../css/global.css" rel="stylesheet" />
+    <link href="../../css/fire-map.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="lucida-indonesia-map">
+      <div class="map-container">
+        <div id="map">
+          <div class="slider-container">
+            <span id="start-date"></span>
+            <label id="date"></label>
+            <input id="slider" type="range" min="0" max="1" step="86400000" value="1" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.min.js"></script>
+  </body>
+</html>
