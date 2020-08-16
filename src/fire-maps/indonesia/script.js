@@ -3,6 +3,7 @@ import countries from "../../geo/indonesia-boundary.json";
 import { colors } from "../../theme/lucida-colors";
 import { csvParse } from "d3";
 import { apdate } from "journalize";
+import debounce from "lodash.debounce";
 
 document.addEventListener("DOMContentLoaded", function (e) {
   initFrame();
@@ -145,6 +146,7 @@ function initMap() {
       let d = new Date(adate);
       filterBy(d);
     });
+    filterBy = debounce(filterBy, 300);
 
     var popup = new mapboxgl.Popup({
       closeButton: false,

@@ -3,6 +3,7 @@ import countries from "../../geo/brazil-boundary.json";
 import { colors } from "../../theme/lucida-colors";
 import { csvParse } from "d3";
 import { apdate } from "journalize";
+import debounce from "lodash.debounce";
 
 document.addEventListener("DOMContentLoaded", function (e) {
   initFrame();
@@ -144,6 +145,7 @@ function initMap() {
       map.setFilter("fires", filters, {});
       END_DATE.textContent = `${apdate(date)}:`;
     }
+    filterBy = debounce(filterBy, 300);
 
     SLIDER.addEventListener("input", function (e) {
       let adate = +e.target.value;
