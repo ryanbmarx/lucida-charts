@@ -1,3 +1,8 @@
+
+.checktable-wrapper{
+ overflow-x: auto;
+}
+
 .checktable {
   --cell-width: calc(100% / 8);
   background: var(--tan-light);
@@ -31,6 +36,7 @@
   box-sizing: border-box;
   border: 1px solid white;
   width: var(--cell-width);
+  min-width: 60px;
 }
 
 .checktable__row th:first-child {

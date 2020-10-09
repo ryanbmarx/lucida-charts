@@ -20,6 +20,14 @@ function parseCSV(text) {
   return retval;
 }
 
+const tooltip = {
+  useHtml: true,
+  formatter: function () {
+    return `<small>${Highcharts.dateFormat("%B %e, %Y", this.x)}</small><br /><b>${this.series.legendItem.textStr}</b>:<br /> $${this.y}`;
+  },
+};
+
+
 document.addEventListener("DOMContentLoaded", function (e) {
   initFrame();
 
@@ -49,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         credits: {
           text: "",
         },
+        tooltip: tooltip,
         series: [
           {
             data: data.map((d) => [d.date, d.idx]),
@@ -62,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
           },
           {
             data: data.map((d) => [d.date, d.nonrspo]),
-            name: "Investible Non-RSPO Palm Oil TR (Simulation)",
+            name: "Investible Non-RSPO Palm Oil TR*",
             turboThreshold: data.length,
             lineColor: colors.greenMoss,
             color: colors.greenMoss,
@@ -72,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
           },
           {
             data: data.map((d) => [d.date, d.composite]),
-            name: "Investible Composite Palm Oil TR (Simulation)",
+            name: "Investible Composite Palm Oil TR*",
             turboThreshold: data.length,
             lineColor: colors.greenParakeet,
             color: colors.greenParakeet,

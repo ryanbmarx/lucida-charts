@@ -12,13 +12,25 @@
       .sidebar__bar-inner span {
         color: black;
       }
+
+      #deforest-container{
+        --min-height: 700px;
+        min-height: var(--min-height); 
+        height: 100%;
+      }
+
+      @media all and (min-width: 768px){
+        #deforest-container{
+          --min-height: 410px;
+        }  
+      }
     </style>
   </head>
 
   <body>
     <div
       id="deforest-container"
-      style="min-height: var(--min-height); height: 100%;"
+      style=""
     ></div>
     <script src="./top-deforesters.min.js"></script>
   </body>

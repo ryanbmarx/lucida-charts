@@ -5,7 +5,11 @@ import { colors } from "../../../theme/lucida-colors";
 import data from "./data.json";
 import { initFrame } from "@newswire/frames";
 
+
 Annotations(Highcharts);
+
+let isDesktop = window.matchMedia('(min-width: 767px)').matches;
+
 const annotations = [
   {
     labelOptions: {
@@ -33,7 +37,7 @@ const annotations = [
           yAxis: 0,
         },
         y: 50,
-        // x: 60,
+        x: isDesktop ? 0 : -60,
         text: "<b>May 17, 2019</b>:<br>RSPO accepts<br>complaint",
       },
       {
@@ -59,7 +63,7 @@ const annotations = [
         align: "left",
         y: -140,
         text:
-          "<b>Aug. 23 2019:</b><br>Complaint filed<br>with European investors",
+          "<b>Aug. 23, 2019:</b><br>Complaint filed<br>with European investors",
       },
     ],
   },

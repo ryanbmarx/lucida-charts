@@ -11,6 +11,10 @@
       .checktable {
         height: 100vh;
       }
+
+      .checktable-wrapper{
+        overflow-x: auto;
+      }
       .pct {
         text-align: right;
       }
@@ -18,6 +22,7 @@
     <!-- <link rel="stylesheet" href="./style.css" /> -->
   </head>
   <body>
+    <div class="checktable-wrapper">
     <table class="checktable">
       <thead>
         <tr class="checktable__row">
@@ -79,6 +84,7 @@
         </tr>
       </tbody>
     </table>
+  </div>
     <script type="module">
       import { initFrame } from "https://unpkg.com/@newswire/frames/dist/index.mjs";
 
