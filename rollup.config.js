@@ -58,8 +58,7 @@ export default [
       // https://github.com/rollup/rollup-plugin-commonjs
       resolve({
         browser: true,
-        dedupe: importee =>
-          importee === "svelte" || importee.startsWith("svelte/"),
+        dedupe: importee => importee === "svelte" || importee.startsWith("svelte/"),
       }),
       commonjs(),
 
@@ -67,11 +66,11 @@ export default [
 
       // use process.env in browser code
       replace({
+        "process.env.MAPBOX_TOKEN_R": JSON.stringify(process.env.MAPBOX_TOKEN_R),
+        "process.env.MAPBOX_TOKEN": JSON.stringify(process.env.MAPBOX_TOKEN),
         "process.env.GIT_BRANCH": JSON.stringify(process.env.GIT_BRANCH),
         "process.env.ASSET_PATH": JSON.stringify(process.env.ASSET_PATH),
-        "process.env.NODE_ENV": JSON.stringify(
-          process.env.NODE_ENV || "development"
-        ),
+        "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development"),
         "process.env.PROJECT_SLUG": JSON.stringify(PROJECT_SLUG),
       }),
 
