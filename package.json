@@ -42,7 +42,7 @@
   "dependencies": {
     "@newswire/frames": "^0.3.1",
     "d3": "^5.15.1",
-    "highcharts": "^8.1.1",
+    "highcharts": "^9.0.0",
     "mapbox-gl": "^1.9.1",
     "sirv-cli": "^0.4.5"
   },
