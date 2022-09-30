@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@newswire/frames": "^0.3.1",
-    "d3": "^5.15.1",
+    "d3": "^7.6.1",
     "highcharts": "^8.1.1",
     "mapbox-gl": "^1.9.1",
     "sirv-cli": "^0.4.5"
